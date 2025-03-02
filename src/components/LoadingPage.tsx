@@ -13,39 +13,23 @@ const assetsToLoad = [
   '/images/rooms/bathroom/wall.png',
   '/images/rooms/bathroom/carpet.png',
   '/images/rooms/bathroom/extra.png',
-  '/images/rooms/bathroom/bath.png',
-  '/images/rooms/bathroom/toilet.png',
-  
   '/images/rooms/bedroom/floor.png',
   '/images/rooms/bedroom/wall.png',
   '/images/rooms/bedroom/carpet.png',
-  '/images/rooms/bedroom/extra.png',
-  '/images/rooms/bedroom/bed.png',
-  '/images/rooms/bedroom/light.png',
-  '/images/rooms/bedroom/wardrobe.png',
-  
   '/images/rooms/gameroom/floor.png',
   '/images/rooms/gameroom/wall.png',
   '/images/rooms/gameroom/carpet.png',
   '/images/rooms/gameroom/extra.png',
-  '/images/rooms/gameroom/ball.png',
-  '/images/rooms/gameroom/balloon-1.png',
-  '/images/rooms/gameroom/balloon-2.png',
-  
   '/images/rooms/kitchen/floor.png',
   '/images/rooms/kitchen/wall.png',
   '/images/rooms/kitchen/table.png',
   '/images/rooms/kitchen/extra.png',
-  '/images/rooms/kitchen/stove.png',
-  '/images/rooms/kitchen/refrigerator.png',
-  
   '/images/rooms/school/floor.png',
   '/images/rooms/school/wall.png',
   '/images/rooms/school/table.png',
   '/images/rooms/school/extra.png',
   '/images/rooms/school/pencil.png',
   '/images/rooms/school/calc.png',
-  
   '/images/loadingBG.png',
   '/images/splashBG.png',
   '/images/parentBG.png',
@@ -74,10 +58,6 @@ const assetsToLoad = [
   '/svg/school.svg',
   '/svg/bedroom.svg',
   '/svg/parent.svg',
-  '/svg/checked.svg',
-  '/svg/remove.svg',
-  '/svg/calender.svg',
-  '/svg/control-panel-back.svg',
   
   // Mini-game thumbnails
   '/images/mini-game/Color.png',
@@ -107,15 +87,7 @@ const assetsToLoad = [
   '/audios/kitchen.wav',
   '/audios/parents.wav',
   '/audios/playroom.wav',
-  '/audios/school.wav',
-  
-  // Parent control panel icons
-  '/images/parent/contol-panel-icons/access.png',
-  '/images/parent/contol-panel-icons/dialog.png',
-  '/images/parent/contol-panel-icons/favorite.png',
-  '/images/parent/contol-panel-icons/learning.png',
-  '/images/parent/contol-panel-icons/notification.png',
-  '/images/parent/contol-panel-icons/progress-center.png'
+  '/audios/school.wav'
 ];
 
 export function LoadingPage() {

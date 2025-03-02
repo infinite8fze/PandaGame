@@ -233,7 +233,7 @@ export function SplashPage() {
           {!presentationStarted ? (
             <button
               
-                 onClick={startPresentation}
+                 onClick={() => navigate('/game')}
               className="group bg-white/90 hover:bg-white text-blue-600 px-8 py-4 rounded-full 
                        shadow-lg transition-all duration-300 transform hover:scale-105
                        flex items-center gap-3 mx-auto mt-8"

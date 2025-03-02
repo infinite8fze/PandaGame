@@ -34,11 +34,8 @@ An interactive learning environment for children featuring a 3D panda character 
 - Parent room access button
 
 ### 5. Room-Specific Features
-- Kitchen: Table prop, stove, refrigerator
-- Playroom: Gaming chair, minigames, balloons
-- Bathroom: Bath, toilet, themed background
-- Bedroom: Bed, wardrobe, light, themed background
-- School: Pencil, calculator, table
+- Kitchen: Table prop
+- Playroom: Gaming chair and minigames
 - All rooms: Themed backgrounds with walls and floors
 - Selected rooms (bathroom, bedroom, gameroom): Decorative carpets
 
@@ -46,14 +43,6 @@ An interactive learning environment for children featuring a 3D panda character 
 - Multiple educational games
 - Modal game selection interface
 - Fullscreen game frame
-
-### 7. Parent Control Panel
-- Customization options
-- Progress center
-- Access restrictions
-- Learning level settings
-- Personalized dialogue settings
-- Notifications & alerts
 
 ## Technical Structure
 
@@ -68,26 +57,13 @@ src/
 │   │   ├── ParentRoom.tsx
 │   │   ├── Playroom.tsx
 │   │   ├── School.tsx
-│   │   ├── RoomBackground.tsx
-│   │   └── Table.tsx
+│   │   └── RoomBackground.tsx
 │   ├── minigames/
 │   │   ├── GameFrame.tsx
 │   │   ├── MinigameButton.tsx
 │   │   └── MinigameModal.tsx
-│   ├── parent/
-│   │   ├── ControlPanelCard.tsx
-│   │   ├── ParentControlPanel.tsx
-│   │   └── pages/
-│   │       ├── AccessRestrictionsPage.tsx
-│   │       ├── LearningLevelSettingsPage.tsx
-│   │       ├── NotificationsAlertsPage.tsx
-│   │       ├── PersonalizedDialoguePage.tsx
-│   │       └── ProgressCenterPage.tsx
-│   ├── subscription/
-│   │   └── SubscriptionPage.tsx
 │   ├── Character.tsx
 │   ├── CurrencyDisplay.tsx
-│   ├── Layout.tsx
 │   ├── LevelButton.tsx
 │   ├── LoadingPage.tsx
 │   ├── Panda.tsx
@@ -122,50 +98,23 @@ public/
 ├── images/
 │   ├── rooms/
 │   │   ├── bathroom/
-│   │   │   ├── bath.png
 │   │   │   ├── carpet.png
-│   │   │   ├── extra.png
 │   │   │   ├── floor.png
-│   │   │   ├── toilet.png
 │   │   │   └── wall.png
 │   │   ├── bedroom/
-│   │   │   ├── bed.png
 │   │   │   ├── carpet.png
-│   │   │   ├── extra.png
 │   │   │   ├── floor.png
-│   │   │   ├── light.png
-│   │   │   ├── wall.png
-│   │   │   └── wardrobe.png
+│   │   │   └── wall.png
 │   │   ├── gameroom/
-│   │   │   ├── ball.png
-│   │   │   ├── balloon-1.png
-│   │   │   ├── balloon-2.png
 │   │   │   ├── carpet.png
-│   │   │   ├── extra.png
 │   │   │   ├── floor.png
 │   │   │   └── wall.png
 │   │   ├── kitchen/
-│   │   │   ├── extra.png
 │   │   │   ├── floor.png
-│   │   │   ├── refrigerator.png
-│   │   │   ├── stove.png
-│   │   │   ├── table.png
 │   │   │   └── wall.png
 │   │   └── school/
-│   │       ├── calc.png
-│   │       ├── extra.png
 │   │       ├── floor.png
-│   │       ├── pencil.png
-│   │       ├── table.png
 │   │       └── wall.png
-│   ├── parent/
-│   │   └── contol-panel-icons/
-│   │       ├── access.png
-│   │       ├── dialog.png
-│   │       ├── favorite.png
-│   │       ├── learning.png
-│   │       ├── notification.png
-│   │       └── progress-center.png
 │   ├── slider/
 │   │   ├── 1.png
 │   │   ├── 2.png
@@ -173,41 +122,13 @@ public/
 │   │   ├── 4.png
 │   │   ├── 5.png
 │   │   └── 6.png
-│   ├── mini-game/
-│   │   ├── Color.png
-│   │   ├── Fast.png
-│   │   ├── Jigsaw.png
-│   │   ├── Match-three.jpg
-│   │   ├── Word-game.png
-│   │   └── Writing.png
-│   ├── button-frame.png
-│   ├── Close.png
-│   ├── coin-frame.png
-│   ├── coin.png
-│   ├── Customization.png
-│   ├── Free-trial.png
-│   ├── game-chair.png
-│   ├── home.png
-│   ├── level-frame.png
-│   ├── loadingBG.png
-│   ├── mic-frame.png
-│   ├── minigame-icon.png
-│   ├── parent-frame.png
-│   ├── parent-mic-frame.png
-│   ├── parentBG.png
-│   ├── professor.png
-│   ├── Progress-Center.png
-│   └── splashBG.png
+│   └── [various UI assets].png
 └── svg/
     ├── bathroom.svg
     ├── bedroom.svg
-    ├── calender.svg
-    ├── checked.svg
-    ├── control-panel-back.svg
     ├── gameroom.svg
     ├── kitchen.svg
     ├── parent.svg
-    ├── remove.svg
     └── school.svg
 ```
 
@@ -217,8 +138,6 @@ public/
 - TypeScript
 - Tailwind CSS
 - Lucide React (for icons)
-- React Router DOM
-- Stripe (for subscription)
 
 ## Component Hierarchy
 1. App (Root)
@@ -235,9 +154,6 @@ public/
        - MinigameButton
        - MinigameModal
        - GameFrame
-   - ParentControlPanel
-     - Various settings pages
-   - SubscriptionPage
 
 ## Z-Index Layering
 1. Floor (z-index: 1)
@@ -247,11 +163,11 @@ public/
 5. UI elements (z-index: 20+)
 
 ## Room-Specific Features
-- **Bathroom**: Bath, toilet, carpet, themed background
-- **Bedroom**: Bed, wardrobe, light, carpet, themed background
-- **Kitchen**: Table, stove, refrigerator, themed background
-- **School**: Pencil, calculator, table, themed background
-- **Playroom**: Gaming chair, minigames, balloons, carpet, themed background
+- **Bathroom**: Carpet, themed background
+- **Bedroom**: Carpet, themed background
+- **Kitchen**: Table prop, themed background
+- **School**: Themed background
+- **Playroom**: Gaming chair, minigames, carpet, themed background
 - **Parent Room**: Professor character, customization options
 
 ## Animation System
@@ -277,11 +193,3 @@ public/
 - Responsive UI scaling
 - Mobile-friendly touch interactions
 - Flexible layout system
-
-## Parent Control Panel Features
-- Personalized Dialogue Page
-- Learning Level Settings
-- Access Restrictions
-- Notifications & Alerts
-- Progress Center
-- Subject Favorite
