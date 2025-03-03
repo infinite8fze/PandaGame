@@ -20,7 +20,7 @@ export function MinigameButton({
   return (
     <button
       onClick={onClick}
-      className={`group relative ${width} ${height} ${
+      className={`group relative clickable ${width} ${height} ${
         animate ? "animate-float" : ""
       } ${className}`}
     >

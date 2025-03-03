@@ -22,7 +22,7 @@ export function School({ children, character }: SchoolProps) {
   const roomObjects = (
     <>
       {/* Pencil on the left */}
-      <div className="relative left-0 top-[60%] -translate-y-1/2">
+      <div className="relative left-0 top-[60%] -translate-y-1/2 clickable">
         <MinigameButton
           onClick={() => setIsMinigameModalOpen(true)}
           imageUrl="/images/rooms/school/pencil.png"
