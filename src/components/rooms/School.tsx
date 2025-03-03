@@ -22,23 +22,23 @@ export function School({ children, character }: SchoolProps) {
   const roomObjects = (
     <>
       {/* Pencil on the left */}
-      <div className="absolute left-0 top-1/2 -translate-y-1/2">
+      <div className="relative left-0 top-[60%] -translate-y-1/2">
         <MinigameButton
           onClick={() => setIsMinigameModalOpen(true)}
           imageUrl="/images/rooms/school/pencil.png"
-          width="w-auto"
-          height="h-96"
+          width="w-[30%]"
+          height="h-auto"
           animate={false}
         />
       </div>
 
       {/* Calculator on the right */}
-      <div className="absolute right-8 top-1/2 -translate-y-1/3 translate-x-1/4">
+      <div className="relative right-[26%] top-[43%] translate-y-[-100%] translate-x-[100%]">
         <MinigameButton
           onClick={() => setIsMinigameModalOpen(true)}
           imageUrl="/images/rooms/school/calc.png"
-          width="w-auto"
-          height="h-64"
+          width="w-[40%]"
+          height="h-auto"
           animate={false}
         />
       </div>
