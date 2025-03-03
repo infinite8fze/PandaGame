@@ -9,9 +9,9 @@ const BubbleButton = ({
   return (
     <button
       onClick={onClick}
-      className={`relative w-full h-auto transition-transform duration-300  aspect-square flex items-center p-4 justify-center rounded-[30%] shadow-xl 
+      className={`relative aspect-square w-full transition-transform duration-300 flex items-center p-4 justify-center rounded-[30%] shadow-xl 
                   border-4 border-white ${bgColor} transition-all active:scale-95 ${
-        isActive ? "scale-125" : "hover:scale-105"
+        isActive ? "scale-105" : "hover:scale-105"
       }`}
       style={{
         boxShadow: `

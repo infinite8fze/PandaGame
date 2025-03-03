@@ -193,7 +193,7 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
 
           {/* Room Selection - Only show when not in parent room */}
           {currentRoom !== "parent" && (
-            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2  z-10 w-full grid grid-cols-5 gap-4 h-auto">
+            <div className="grid grid-cols-5 gap-4  w-full h-[100px]  absolute bottom-8 left-1/2 transform -translate-x-1/2  z-10">
               {rooms.map((room) => (
                 <BubbleButton
                   icon={room.icon}
