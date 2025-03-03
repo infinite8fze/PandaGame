@@ -46,7 +46,9 @@ export function Playroom({ children, character }: PlayroomProps) {
   );
   return (
     <Layout
-      background={<RoomBackground room="gameroom" />}
+      background={
+        <RoomBackground room="gameroom" translateY="translate-y-[-30%]" />
+      }
       roomObjects={roomObjects}
       character={character}
     >

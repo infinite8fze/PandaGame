@@ -5,18 +5,24 @@ import { RoomButton } from "../RoomButton";
 import { LevelButton } from "../LevelButton";
 import { useAudio } from "../../hooks/useAudio";
 import BubbleButton from "../BubbleButton";
-import GameRoomIcon from "../icons/GameRoomIcon";
+import {
+  BathroomIcon,
+  BedroomIcon,
+  GameRoomIcon,
+  KitchenIcon,
+  SchoolIcon,
+} from "../icons";
 interface RoomButtonsProps {
   currentRoom?: string;
   setCurrentRoom: Dispatch<SetStateAction<string>>;
 }
 const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
   const rooms = [
-    { id: "gameroom", name: "Playroom" },
-    { id: "kitchen", name: "Kitchen" },
-    { id: "bathroom", name: "Bathroom" },
-    { id: "school", name: "School" },
-    { id: "bedroom", name: "Bedroom" },
+    { id: "gameroom", name: "Playroom", icon: GameRoomIcon },
+    { id: "kitchen", name: "Kitchen", icon: KitchenIcon },
+    { id: "bathroom", name: "Bathroom", icon: BathroomIcon },
+    { id: "school", name: "School", icon: SchoolIcon },
+    { id: "bedroom", name: "Bedroom", icon: BedroomIcon },
   ];
   const {
     isRecording,
@@ -190,7 +196,7 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2  z-10 w-full grid grid-cols-5 gap-4 h-auto">
               {rooms.map((room) => (
                 <BubbleButton
-                  icon={GameRoomIcon}
+                  icon={room.icon}
                   key={room.id}
                   isActive={currentRoom === room.id}
                   onClick={() => setCurrentRoom(room.id)}
