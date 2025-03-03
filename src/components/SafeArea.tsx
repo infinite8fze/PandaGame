@@ -1,26 +1,46 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
 
 interface SafeAreaProps {
   children: React.ReactNode;
 }
 
 export function SafeArea({ children }: SafeAreaProps) {
+  const [aspectRatio, setAspectRatio] = useState("9 / 16");
+
+  useEffect(() => {
+    const updateAspectRatio = () => {
+      setAspectRatio(
+        window.innerWidth > window.innerHeight
+          ? "9 / 16"
+          : `${window.innerWidth} / ${window.innerHeight}`
+      );
+    };
+
+    updateAspectRatio(); // Set initially
+    window.addEventListener("resize", updateAspectRatio);
+
+    console.log("🚀 ~ SafeArea ~ aspectRatio:", aspectRatio);
+    return () => window.removeEventListener("resize", updateAspectRatio);
+  }, []);
   return (
-    <div className="relative w-full h-full">
-      <div 
-        className="absolute w-full h-full"
-        style={{
-          aspectRatio: '9/16',
-          maxHeight: '100vh',
-          maxWidth: 'calc(100vh * 9/16)',
-          left: '50%',
-          top: '50%',
-          '--scale': 'min(1, min(100vw / (100vh * 9/16), 100vh / (100vw * 16/9)))',
-          transform: 'translate(-50%, -50%)'
-        } as React.CSSProperties}
-      >
-        {children}
-      </div>
+    // <div className="relative w-full h-full">
+    <div
+      className="absolute w-full h-full top-0 left-0 z-10"
+      style={
+        {
+          aspectRatio,
+          maxHeight: "100vh",
+          maxWidth: "calc(100vh * 9/16)",
+          left: "50%",
+          top: "50%",
+          "--scale":
+            "min(1, min(100vw / (100vh * 9/16), 100vh / (100vw * 16/9)))",
+          transform: "translate(-50%, -50%)",
+        } as React.CSSProperties
+      }
+    >
+      {children}
     </div>
+    // </div>
   );
 }

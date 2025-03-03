@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import { RoomBackground } from './RoomBackground';
-import { Layout } from '../Layout';
-import { MinigameButton } from '../minigames/MinigameButton';
-import { MinigameModal } from '../minigames/MinigameModal';
-import { GameFrame } from '../minigames/GameFrame';
+import React, { useState } from "react";
+import { RoomBackground } from "./RoomBackground";
+import { Layout } from "../Layout";
+import { MinigameButton } from "../minigames/MinigameButton";
+import { MinigameModal } from "../minigames/MinigameModal";
+import { GameFrame } from "../minigames/GameFrame";
 
 interface KitchenProps {
   children?: React.ReactNode;
@@ -23,8 +23,8 @@ export function Kitchen({ children, character }: KitchenProps) {
     <>
       {/* Stove on the left */}
       <div className="absolute left-1/3 top-2/3 translate-y-[-100%] translate-x-[-20%]">
-        <img 
-          src="/images/rooms/kitchen/stove.png" 
+        <img
+          src="/images/rooms/kitchen/stove.png"
           alt="Stove"
           className="w-96 h-auto"
         />
@@ -32,8 +32,8 @@ export function Kitchen({ children, character }: KitchenProps) {
 
       {/* Refrigerator on the right */}
       <div className="absolute right-1/3 top-2/3 translate-y-[-100%] translate-x-1/2">
-        <img 
-          src="/images/rooms/kitchen/refrigerator.png" 
+        <img
+          src="/images/rooms/kitchen/refrigerator.png"
           alt="Refrigerator"
           className="w-80 h-auto"
         />
@@ -43,7 +43,9 @@ export function Kitchen({ children, character }: KitchenProps) {
 
   return (
     <Layout
-      background={<RoomBackground room="kitchen" />}
+      background={
+        <RoomBackground room="kitchen" translateY="translate-y-[-52%]" />
+      }
       character={character}
       outsideObjects={outsideObjects}
       room="kitchen"
