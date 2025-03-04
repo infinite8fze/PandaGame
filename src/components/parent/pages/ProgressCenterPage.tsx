@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { SafeArea } from '../../SafeArea';
+import React, { useState, useEffect } from "react";
+import { SafeArea } from "../../SafeArea";
 
 interface LineChartProps {
   data: {
@@ -18,10 +18,7 @@ function LineChart({ data }: LineChartProps) {
   const chartHeight = height - padding.top - padding.bottom;
 
   // Find max value for scaling
-  const maxValue = Math.max(
-    ...data.abc,
-    ...data.math
-  );
+  const maxValue = Math.max(...data.abc, ...data.math);
 
   // Scale values to fit chart height
   const scaleY = (value: number) => {
@@ -30,11 +27,14 @@ function LineChart({ data }: LineChartProps) {
 
   // Create points for each line
   const createPoints = (values: number[]) => {
-    return values.map((value, index) => {
-      const x = (index / (data.labels.length - 1)) * chartWidth + padding.left;
-      const y = scaleY(value);
-      return `${x},${y}`;
-    }).join(' ');
+    return values
+      .map((value, index) => {
+        const x =
+          (index / (data.labels.length - 1)) * chartWidth + padding.left;
+        const y = scaleY(value);
+        return `${x},${y}`;
+      })
+      .join(" ");
   };
 
   // Create path for each line
@@ -59,7 +59,12 @@ function LineChart({ data }: LineChartProps) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <svg width="100%" height={height} viewBox={`0 0 ${width} ${height}`} preserveAspectRatio="xMidYMid meet">
+      <svg
+        width="100%"
+        height={height}
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="xMidYMid meet"
+      >
         {/* X-axis */}
         <line
           x1={padding.left}
@@ -82,7 +87,8 @@ function LineChart({ data }: LineChartProps) {
 
         {/* X-axis labels */}
         {data.labels.map((label, index) => {
-          const x = (index / (data.labels.length - 1)) * chartWidth + padding.left;
+          const x =
+            (index / (data.labels.length - 1)) * chartWidth + padding.left;
           return (
             <text
               key={`x-label-${index}`}
@@ -105,16 +111,13 @@ function LineChart({ data }: LineChartProps) {
           </linearGradient>
         </defs>
         <path
-          d={`${abcPath} L ${chartWidth + padding.left},${chartHeight + padding.top} L ${padding.left},${chartHeight + padding.top} Z`}
+          d={`${abcPath} L ${chartWidth + padding.left},${
+            chartHeight + padding.top
+          } L ${padding.left},${chartHeight + padding.top} Z`}
           fill="url(#abcGradient)"
           opacity="0.5"
         />
-        <path
-          d={abcPath}
-          stroke="#16BDFF"
-          strokeWidth="3"
-          fill="none"
-        />
+        <path d={abcPath} stroke="#16BDFF" strokeWidth="3" fill="none" />
         <polyline
           points={abcPoints}
           fill="none"
@@ -132,16 +135,13 @@ function LineChart({ data }: LineChartProps) {
           </linearGradient>
         </defs>
         <path
-          d={`${mathPath} L ${chartWidth + padding.left},${chartHeight + padding.top} L ${padding.left},${chartHeight + padding.top} Z`}
+          d={`${mathPath} L ${chartWidth + padding.left},${
+            chartHeight + padding.top
+          } L ${padding.left},${chartHeight + padding.top} Z`}
           fill="url(#mathGradient)"
           opacity="0.5"
         />
-        <path
-          d={mathPath}
-          stroke="#FF9E2D"
-          strokeWidth="3"
-          fill="none"
-        />
+        <path d={mathPath} stroke="#FF9E2D" strokeWidth="3" fill="none" />
         <polyline
           points={mathPoints}
           fill="none"
@@ -153,7 +153,8 @@ function LineChart({ data }: LineChartProps) {
 
         {/* Data points for ABC Learning */}
         {data.abc.map((value, index) => {
-          const x = (index / (data.labels.length - 1)) * chartWidth + padding.left;
+          const x =
+            (index / (data.labels.length - 1)) * chartWidth + padding.left;
           const y = scaleY(value);
           return (
             <circle
@@ -170,7 +171,8 @@ function LineChart({ data }: LineChartProps) {
 
         {/* Data points for Math */}
         {data.math.map((value, index) => {
-          const x = (index / (data.labels.length - 1)) * chartWidth + padding.left;
+          const x =
+            (index / (data.labels.length - 1)) * chartWidth + padding.left;
           const y = scaleY(value);
           return (
             <circle
@@ -216,37 +218,37 @@ function DonutChart({ data }: DonutChartProps) {
   const innerRadius = radius * 0.6; // Inner circle size (creates the donut hole)
   const centerX = size / 2;
   const centerY = size / 2;
-  
+
   // Calculate total for percentages
   const total = data.reduce((sum, item) => sum + item.value, 0);
-  
+
   // Generate pie segments
-  let segments = [];
+  const segments = [];
   let currentAngle = 0;
-  
+
   for (const item of data) {
     // Calculate angle for this segment
     const angle = (item.value / total) * 360;
-    
+
     // Convert angles to radians for calculations
     const startAngle = currentAngle * (Math.PI / 180);
     const endAngle = (currentAngle + angle) * (Math.PI / 180);
-    
+
     // Calculate path coordinates
     const startX = centerX + radius * Math.sin(startAngle);
     const startY = centerY - radius * Math.cos(startAngle);
     const endX = centerX + radius * Math.sin(endAngle);
     const endY = centerY - radius * Math.cos(endAngle);
-    
+
     // Inner arc points
     const innerStartX = centerX + innerRadius * Math.sin(startAngle);
     const innerStartY = centerY - innerRadius * Math.cos(startAngle);
     const innerEndX = centerX + innerRadius * Math.sin(endAngle);
     const innerEndY = centerY - innerRadius * Math.cos(endAngle);
-    
+
     // Determine if the arc should be drawn as the "large arc"
     const largeArcFlag = angle > 180 ? 1 : 0;
-    
+
     // Create SVG path
     const path = [
       `M ${innerStartX} ${innerStartY}`, // Move to inner start point
@@ -254,22 +256,22 @@ function DonutChart({ data }: DonutChartProps) {
       `A ${radius} ${radius} 0 ${largeArcFlag} 1 ${endX} ${endY}`, // Outer arc
       `L ${innerEndX} ${innerEndY}`, // Line to inner end point
       `A ${innerRadius} ${innerRadius} 0 ${largeArcFlag} 0 ${innerStartX} ${innerStartY}`, // Inner arc (note the 0 sweep flag to go the other way)
-      'Z' // Close path
-    ].join(' ');
-    
+      "Z", // Close path
+    ].join(" ");
+
     // Add segment to array
     segments.push({
       path,
       color: item.color,
       name: item.name,
       value: item.value,
-      percentage: Math.round((item.value / total) * 100)
+      percentage: Math.round((item.value / total) * 100),
     });
-    
+
     // Update current angle for next segment
     currentAngle += angle;
   }
-  
+
   return (
     <div className="w-full flex flex-col items-center">
       <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
@@ -283,7 +285,7 @@ function DonutChart({ data }: DonutChartProps) {
             strokeWidth="1"
           />
         ))}
-        
+
         {/* Center circle for aesthetics */}
         <circle
           cx={centerX}
@@ -294,7 +296,7 @@ function DonutChart({ data }: DonutChartProps) {
           strokeWidth="1"
         />
       </svg>
-      
+
       {/* Legend as buttons */}
       <div className="grid grid-cols-2 gap-4 mt-6">
         {segments.map((segment, index) => (
@@ -303,8 +305,8 @@ function DonutChart({ data }: DonutChartProps) {
             className="flex items-center px-3 py-2 rounded-lg transition-transform hover:scale-105"
             style={{ border: `2px solid ${segment.color}` }}
           >
-            <div 
-              className="w-4 h-4 mr-2 rounded-sm" 
+            <div
+              className="w-4 h-4 mr-2 rounded-sm"
               style={{ backgroundColor: segment.color }}
             ></div>
             <span className="text-sm">
@@ -325,49 +327,49 @@ export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
   const [chartData, setChartData] = useState({
     abc: [20, 35, 45, 30, 50, 70, 85],
     math: [30, 40, 35, 45, 60, 55, 75],
-    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+    labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
   });
-  
-  const [timeRange, setTimeRange] = useState('week');
-  
+
+  const [timeRange, setTimeRange] = useState("week");
+
   // Donut chart data
   const donutData = [
-    { name: 'Languages', value: 68, color: '#FF6384' },
-    { name: 'Math', value: 24, color: '#36A2EB' },
-    { name: 'Animal', value: 24, color: '#FFCE56' },
-    { name: 'Art', value: 24, color: '#4BC0C0' }
+    { name: "Languages", value: 68, color: "#FF6384" },
+    { name: "Math", value: 24, color: "#36A2EB" },
+    { name: "Animal", value: 24, color: "#FFCE56" },
+    { name: "Art", value: 24, color: "#4BC0C0" },
   ];
-  
+
   // Update chart data when time range changes
   useEffect(() => {
-    if (timeRange === 'week') {
+    if (timeRange === "week") {
       setChartData({
         abc: [20, 35, 45, 30, 50, 70, 85],
         math: [30, 40, 35, 45, 60, 55, 75],
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       });
-    } else if (timeRange === 'month') {
+    } else if (timeRange === "month") {
       setChartData({
         abc: [25, 40, 55, 65, 60, 75, 85, 90],
         math: [35, 45, 40, 50, 65, 60, 70, 80],
-        labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4']
+        labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
       });
-    } else if (timeRange === 'year') {
+    } else if (timeRange === "year") {
       setChartData({
         abc: [30, 45, 60, 75, 85, 90],
         math: [40, 50, 55, 65, 75, 85],
-        labels: ['Jan', 'Mar', 'May', 'Jul', 'Sep', 'Nov']
+        labels: ["Jan", "Mar", "May", "Jul", "Sep", "Nov"],
       });
     }
   }, [timeRange]);
-  
+
   return (
     <div className="fixed inset-0 z-50">
       {/* Full screen background with linear gradient */}
-      <div 
-        className="absolute inset-0" 
+      <div
+        className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to bottom, #ffeaed, white)'
+          background: "linear-gradient(to bottom, #ffeaed, white)",
         }}
       />
 
@@ -378,16 +380,21 @@ export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
           <div className="flex items-center mt-8 mb-10">
             <button
               onClick={onBack}
-              className="w-12 h-12 mr-4 transition-transform hover:scale-110"
+              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img 
-                src="/svg/control-panel-back.svg" 
+              <img
+                src="/svg/control-panel-back.svg"
                 alt="Back"
                 className="w-full h-full object-contain"
-                style={{ filter: "invert(45%) sepia(85%) saturate(1073%) hue-rotate(314deg) brightness(95%) contrast(96%)" }}
+                style={{
+                  filter:
+                    "invert(45%) sepia(85%) saturate(1073%) hue-rotate(314deg) brightness(95%) contrast(96%)",
+                }}
               />
             </button>
-            <h2 className="text-3xl font-bold text-[#E16C78]">Progress Center</h2>
+            <h2 className="text-3xl font-bold text-[#E16C78]">
+              Progress Center
+            </h2>
           </div>
 
           {/* Content */}
@@ -395,58 +402,65 @@ export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
             <div className="max-w-2xl mx-auto">
               {/* Child's Progress Chart */}
               <div className="mb-12">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-2">1. Child's Progress Chart</h3>
+                <h3 className="text-2xl font-bold text-[#1F2020] mb-2">
+                  1. Child's Progress Chart
+                </h3>
                 <p className="text-gray-600 mb-6">
-                  Track your child's progress over time in each lesson to monitor improvements and areas for growth.
+                  Track your child's progress over time in each lesson to
+                  monitor improvements and areas for growth.
                 </p>
-                
+
                 {/* Time range selector */}
                 <div className="flex justify-center mb-6">
                   <div className="inline-flex rounded-md shadow-sm">
                     <button
-                      onClick={() => setTimeRange('week')}
+                      onClick={() => setTimeRange("week")}
                       className={`px-4 py-2 text-sm font-medium rounded-l-lg ${
-                        timeRange === 'week' 
-                          ? 'bg-[#E16C78] text-white' 
-                          : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
+                        timeRange === "week"
+                          ? "bg-[#E16C78] text-white"
+                          : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-300"
                       }`}
                     >
                       Week
                     </button>
                     <button
-                      onClick={() => setTimeRange('month')}
+                      onClick={() => setTimeRange("month")}
                       className={`px-4 py-2 text-sm font-medium ${
-                        timeRange === 'month' 
-                          ? 'bg-[#E16C78] text-white' 
-                          : 'bg-white text-gray-700 hover:bg-gray-50 border-t border-b border-gray-300'
+                        timeRange === "month"
+                          ? "bg-[#E16C78] text-white"
+                          : "bg-white text-gray-700 hover:bg-gray-50 border-t border-b border-gray-300"
                       }`}
                     >
                       Month
                     </button>
                     <button
-                      onClick={() => setTimeRange('year')}
+                      onClick={() => setTimeRange("year")}
                       className={`px-4 py-2 text-sm font-medium rounded-r-lg ${
-                        timeRange === 'year' 
-                          ? 'bg-[#E16C78] text-white' 
-                          : 'bg-white text-gray-700 hover:bg-gray-50 border border-gray-300'
+                        timeRange === "year"
+                          ? "bg-[#E16C78] text-white"
+                          : "bg-white text-gray-700 hover:bg-gray-50 border border-gray-300"
                       }`}
                     >
                       Year
                     </button>
                   </div>
                 </div>
-                
+
                 {/* Line Chart */}
                 <LineChart data={chartData} />
               </div>
-              
+
               {/* Time Spent on Topics */}
               <div className="mb-12">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-2">2. Time Spent on Topics</h3>
+                <h3 className="text-2xl font-bold text-[#1F2020] mb-2">
+                  2. Time Spent on Topics
+                </h3>
                 <p className="text-gray-600 mb-6">
-                  A circular chart showing the percentage of time your child has spent on different topics like Writing, Reading, Pronunciation, Math, and Art.
+                  A circular chart showing the percentage of time your child has
+                  spent on different topics like Writing, Reading,
+                  Pronunciation, Math, and Art.
                 </p>
-                
+
                 {/* Donut Chart */}
                 <DonutChart data={donutData} />
               </div>

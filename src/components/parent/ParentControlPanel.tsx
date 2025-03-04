@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import { ControlPanelCard } from './ControlPanelCard';
-import { SafeArea } from '../SafeArea';
-import { PersonalizedDialoguePage } from './pages/PersonalizedDialoguePage';
-import { LearningLevelSettingsPage } from './pages/LearningLevelSettingsPage';
-import { AccessRestrictionsPage } from './pages/AccessRestrictionsPage';
-import { NotificationsAlertsPage } from './pages/NotificationsAlertsPage';
-import { ProgressCenterPage } from './pages/ProgressCenterPage';
+import React, { useState } from "react";
+import { ControlPanelCard } from "./ControlPanelCard";
+import { SafeArea } from "../SafeArea";
+import { PersonalizedDialoguePage } from "./pages/PersonalizedDialoguePage";
+import { LearningLevelSettingsPage } from "./pages/LearningLevelSettingsPage";
+import { AccessRestrictionsPage } from "./pages/AccessRestrictionsPage";
+import { NotificationsAlertsPage } from "./pages/NotificationsAlertsPage";
+import { ProgressCenterPage } from "./pages/ProgressCenterPage";
 
 interface ParentControlPanelProps {
   onClose: () => void;
@@ -16,61 +16,64 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
 
   const controlPanelItems = [
     {
-      id: 'dialog',
-      title: 'Personalized Dialogue Page',
+      id: "dialog",
+      title: "Personalized Dialogue Page",
       titleColor: "#003A51",
-      icon: '/images/parent/contol-panel-icons/dialog.png',
-      bgColor: 'radial-gradient(circle at 15% 50%, #B7EBFF, #16BDFF)'
+      icon: "/images/parent/contol-panel-icons/dialog.png",
+      bgColor: "radial-gradient(circle at 15% 50%, #B7EBFF, #16BDFF)",
     },
     {
-      id: 'learning',
-      title: 'Learning Level Settings',
+      id: "learning",
+      title: "Learning Level Settings",
       titleColor: "#1E1E7F",
-      icon: '/images/parent/contol-panel-icons/learning.png',
-      bgColor: 'radial-gradient(circle at 15% 50%, #D0D0FF, #8C8CF8)'
+      icon: "/images/parent/contol-panel-icons/learning.png",
+      bgColor: "radial-gradient(circle at 15% 50%, #D0D0FF, #8C8CF8)",
     },
     {
-      id: 'access',
-      title: 'Access Restrictions',
+      id: "access",
+      title: "Access Restrictions",
       titleColor: "#E04E2D",
-      icon: '/images/parent/contol-panel-icons/access.png',
-      bgColor: 'radial-gradient(circle at 15% 50%, #FFF2C7, #FFDD6B)'
+      icon: "/images/parent/contol-panel-icons/access.png",
+      bgColor: "radial-gradient(circle at 15% 50%, #FFF2C7, #FFDD6B)",
     },
     {
-      id: 'notification',
-      title: 'Notifications & Alerts',
+      id: "notification",
+      title: "Notifications & Alerts",
       titleColor: "#50320A",
-      icon: '/images/parent/contol-panel-icons/notification.png',
-      bgColor: 'radial-gradient(circle at 15% 50%, #FFE676, #FE9818)'
+      icon: "/images/parent/contol-panel-icons/notification.png",
+      bgColor: "radial-gradient(circle at 15% 50%, #FFE676, #FE9818)",
     },
     {
-      id: 'progress-center',
-      title: 'Progress Center',
+      id: "progress-center",
+      title: "Progress Center",
       titleColor: "#1E6957",
-      icon: '/images/parent/contol-panel-icons/progress-center.png',
-      bgColor: 'radial-gradient(circle at 15% 50%, #E0FF98, #A9DC35)'
+      icon: "/images/parent/contol-panel-icons/progress-center.png",
+      bgColor: "radial-gradient(circle at 15% 50%, #E0FF98, #A9DC35)",
     },
-    {
-      id: 'favorite',
-      title: 'Subject Favorite',
-      titleColor: "#951B12",
-      icon: '/images/parent/contol-panel-icons/favorite.png',
-      bgColor: 'radial-gradient(circle at 15% 50%, #FFB0B1, #FF4E51)'
-    }
   ];
+  // favorite date for control panel item
+  // {
+  //   id: "favorite",
+  //   title: "Subject Favorite",
+  //   titleColor: "#951B12",
+  //   icon: "/images/parent/contol-panel-icons/favorite.png",
+  //   bgColor: "radial-gradient(circle at 15% 50%, #FFB0B1, #FF4E51)",
+  // },
 
   // Render specific page based on selection
   const renderPage = () => {
     switch (currentPage) {
-      case 'dialog':
+      case "dialog":
         return <PersonalizedDialoguePage onBack={() => setCurrentPage(null)} />;
-      case 'learning':
-        return <LearningLevelSettingsPage onBack={() => setCurrentPage(null)} />;
-      case 'access':
+      case "learning":
+        return (
+          <LearningLevelSettingsPage onBack={() => setCurrentPage(null)} />
+        );
+      case "access":
         return <AccessRestrictionsPage onBack={() => setCurrentPage(null)} />;
-      case 'notification':
+      case "notification":
         return <NotificationsAlertsPage onBack={() => setCurrentPage(null)} />;
-      case 'progress-center':
+      case "progress-center":
         return <ProgressCenterPage onBack={() => setCurrentPage(null)} />;
       default:
         return null;
@@ -85,10 +88,19 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
   return (
     <div className="fixed inset-0 z-50">
       {/* Full screen background with linear gradient */}
-      <div 
-        className="absolute inset-0" 
+      <div
+        className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to bottom, #3E86B8, white)'
+          background: "linear-gradient(to bottom, #3E86B8, white)",
+        }}
+      />
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: "url(/images/parent/sky.jpg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center bottom",
+          backgroundRepeat: "no-repeat",
         }}
       />
 
@@ -98,17 +110,19 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
           {/* Back button */}
           <button
             onClick={onClose}
-            className="absolute top-4 left-4 w-16 h-16 transition-transform hover:scale-110"
+            className="clickable absolute top-4 left-4 w-16 h-16 transition-transform hover:scale-110"
           >
-            <div 
+            <div
               className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: 'url(/images/home.png)' }}
+              style={{ backgroundImage: "url(/images/home.png)" }}
             />
           </button>
 
           {/* Title */}
           <div className="text-center mt-16 mb-8">
-            <h2 className="text-4xl font-bold text-[#3E3E3E] drop-shadow-lg">Parent Control Panel</h2>
+            <h2 className="text-4xl font-bold text-[#3E3E3E] drop-shadow-lg">
+              Parent Control Panel
+            </h2>
           </div>
 
           {/* Control Panel Cards */}

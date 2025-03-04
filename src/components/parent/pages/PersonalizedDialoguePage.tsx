@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
-import { SafeArea } from '../../SafeArea';
-import { ChevronDown, ChevronUp, Calendar, Check, Plus } from 'lucide-react';
+import React, { useState, useRef } from "react";
+import { SafeArea } from "../../SafeArea";
+import { ChevronDown, ChevronUp, Calendar, Check, Plus } from "lucide-react";
 
 interface ToggleOptionProps {
   label: string;
@@ -10,12 +10,28 @@ interface ToggleOptionProps {
 
 function ToggleOption({ label, isSelected, onClick }: ToggleOptionProps) {
   return (
+    // <button onClick={onClick} className={`relative`}>
+    //   <svg
+    //     width="100%"
+    //     height="100%"
+    //     viewBox="0 0 200 60"
+    //     xmlns="http://www.w3.org/2000/svg"
+    //   >
+    //     <path
+    //       d="M10,30 Q10,10 30,10 H170 Q190,10 190,30 V30 Q190,50 170,50 H30 Q10,50 10,30 Z"
+    //       fill={` ${isSelected ? "#16BDFF" : "#16BDFF"}`}
+    //     />
+    //   </svg>
+    //   <span className="absolute inset-0 flex items-center justify-center text-white font-bold">
+    //     {label}
+    //   </span>
+    // </button>
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-[30px] transition-all duration-200 ${
-        isSelected 
-          ? 'bg-[#16BDFF] text-white' 
-          : 'bg-white text-[#16BDFF] border border-[#16BDFF]'
+      className={`px-6 py-3 rounded-[20px] transition-all duration-200 ${
+        isSelected
+          ? "bg-[#16BDFF] text-white"
+          : "bg-white text-[#16BDFF] border border-[#16BDFF]"
       }`}
     >
       <span className="font-bold">{label}</span>
@@ -34,7 +50,7 @@ function Dropdown({ title, date, description }: DropdownProps) {
 
   return (
     <div className="mb-4">
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="w-full bg-white rounded-xl p-4 flex items-center justify-between shadow-md border-2 border-[#B3E4EF]"
       >
@@ -43,9 +59,13 @@ function Dropdown({ title, date, description }: DropdownProps) {
           <span className="font-bold text-[#16BDFF] mr-4">{title}</span>
           <span className="text-[#16BDFF]">{date}</span>
         </div>
-        {isOpen ? <ChevronUp className="w-5 h-5 text-gray-500" /> : <ChevronDown className="w-5 h-5 text-gray-500" />}
+        {isOpen ? (
+          <ChevronUp className="w-5 h-5 text-gray-500" />
+        ) : (
+          <ChevronDown className="w-5 h-5 text-gray-500" />
+        )}
       </button>
-      
+
       {isOpen && (
         <div className="bg-white rounded-b-lg p-4 mt-1 shadow-md">
           <p className="text-gray-700">{description}</p>
@@ -66,9 +86,9 @@ function DayButton({ day, isSelected, onClick }: DayButtonProps) {
     <button
       onClick={onClick}
       className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-        isSelected 
-          ? 'bg-green-500 text-white' 
-          : 'bg-white text-black border border-gray-300'
+        isSelected
+          ? "bg-green-500 text-white"
+          : "bg-white text-black border border-gray-300"
       }`}
     >
       {day}
@@ -89,25 +109,25 @@ interface DailyTaskProps {
   onUpdateMessage: (id: string, message: string) => void;
 }
 
-function DailyTask({ 
-  id, 
-  message, 
-  time, 
-  days, 
-  isChecked, 
-  onDelete, 
+function DailyTask({
+  id,
+  message,
+  time,
+  days,
+  isChecked,
+  onDelete,
   onToggleCheck,
   onUpdateDays,
   onUpdateTime,
-  onUpdateMessage
+  onUpdateMessage,
 }: DailyTaskProps) {
   const [isEditing, setIsEditing] = useState(false);
   const [editedMessage, setEditedMessage] = useState(message);
-  const allDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
-  
+  const allDays = ["S", "M", "T", "W", "T", "F", "S"];
+
   const handleDayToggle = (day: string) => {
     const newDays = days.includes(day)
-      ? days.filter(d => d !== day)
+      ? days.filter((d) => d !== day)
       : [...days, day];
     onUpdateDays(id, newDays);
   };
@@ -125,20 +145,25 @@ function DailyTask({
     <div className="flex mb-4">
       {/* Checkbox and delete button outside the box */}
       <div className="mr-4 flex flex-col items-center">
-        <button 
+        <button
           onClick={() => onToggleCheck(id)}
           className="w-6 h-6 border-2 border-gray-400 rounded flex items-center justify-center mb-4"
         >
           {isChecked && <Check className="w-4 h-4 text-green-500" />}
         </button>
-        <button 
+        <button
           onClick={() => onDelete(id)}
           className="text-[#BFC7E1] hover:text-[#9DA5C9]"
         >
-          <img src="/svg/remove.svg" alt="Delete" className="w-5 h-5" style={{fill: '#BFC7E1'}}/>
+          <img
+            src="/svg/remove.svg"
+            alt="Delete"
+            className="w-5 h-5"
+            style={{ fill: "#BFC7E1" }}
+          />
         </button>
       </div>
-      
+
       {/* Task content box */}
       <div className="flex-1 bg-white rounded-xl p-4 shadow-md border-2 border-[#229654] relative">
         {/* Message */}
@@ -151,24 +176,24 @@ function DailyTask({
               className="w-full p-2 border border-gray-300 rounded"
               autoFocus
               onBlur={handleMessageSave}
-              onKeyDown={(e) => e.key === 'Enter' && handleMessageSave()}
+              onKeyDown={(e) => e.key === "Enter" && handleMessageSave()}
             />
           </div>
         ) : (
-          <div 
+          <div
             className="text-lg font-medium mb-3 cursor-pointer text-[#229654]"
             onClick={() => setIsEditing(true)}
           >
             {message}
           </div>
         )}
-        
+
         {/* Time and days */}
         <div className="flex items-center">
           <div className="flex items-center">
             <span className="text-gray-700">09:00 AM</span>
           </div>
-          
+
           <div className="flex space-x-1 ml-4">
             {allDays.map((day, index) => (
               <DayButton
@@ -180,7 +205,7 @@ function DailyTask({
             ))}
           </div>
         </div>
-        
+
         {/* Schedule button */}
         <button className="absolute bottom-4 right-4 bg-[#229654] text-white px-4 py-2 rounded-lg flex items-center">
           <Calendar className="w-4 h-4 mr-2" />
@@ -197,15 +222,21 @@ interface SimpleMessageSectionProps {
   examples: string[];
 }
 
-function SimpleMessageSection({ title, subtitle, examples }: SimpleMessageSectionProps) {
+function SimpleMessageSection({
+  title,
+  subtitle,
+  examples,
+}: SimpleMessageSectionProps) {
   return (
     <div className="mb-8">
       <h4 className="text-xl font-medium text-[#1F2020] mb-2">{title}</h4>
       <p className="text-gray-600 mb-4">{subtitle}</p>
-      
+
       <div className="space-y-2 ml-4">
         {examples.map((example, index) => (
-          <p key={index} className="text-gray-700">{example}</p>
+          <p key={index} className="text-gray-700">
+            {example}
+          </p>
         ))}
       </div>
     </div>
@@ -216,62 +247,64 @@ interface PersonalizedDialoguePageProps {
   onBack: () => void;
 }
 
-export function PersonalizedDialoguePage({ onBack }: PersonalizedDialoguePageProps) {
-  const [selectedTone, setSelectedTone] = useState<'formal' | 'casual' | 'educational'>('educational');
+export function PersonalizedDialoguePage({
+  onBack,
+}: PersonalizedDialoguePageProps) {
+  const [selectedTone, setSelectedTone] = useState<
+    "formal" | "casual" | "educational"
+  >("educational");
   const [tasks, setTasks] = useState([
     {
-      id: '1',
+      id: "1",
       message: "Don't forget to brush your teeth before bed!",
       time: "09:00",
-      days: ['M', 'T', 'W'],
-      isChecked: false
-    }
+      days: ["M", "T", "W"],
+      isChecked: false,
+    },
   ]);
   const [newTaskText, setNewTaskText] = useState("");
   const newTaskInputRef = useRef<HTMLInputElement>(null);
-  
+
   // Get current date for daily report
   const today = new Date();
-  const formattedToday = today.toLocaleDateString('en-US', { 
-    month: 'long', 
-    day: 'numeric' 
+  const formattedToday = today.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
   });
-  
+
   // Get date range for weekly report
   const weekAgo = new Date(today);
   weekAgo.setDate(today.getDate() - 7);
-  const formattedWeekAgo = weekAgo.toLocaleDateString('en-US', { 
-    month: 'long', 
-    day: 'numeric' 
+  const formattedWeekAgo = weekAgo.toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
   });
   const formattedWeekRange = `${formattedWeekAgo} - ${formattedToday}`;
 
   const handleDeleteTask = (id: string) => {
-    setTasks(tasks.filter(task => task.id !== id));
+    setTasks(tasks.filter((task) => task.id !== id));
   };
 
   const handleToggleCheck = (id: string) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, isChecked: !task.isChecked } : task
-    ));
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, isChecked: !task.isChecked } : task
+      )
+    );
   };
 
   const handleUpdateDays = (id: string, days: string[]) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, days } : task
-    ));
+    setTasks(tasks.map((task) => (task.id === id ? { ...task, days } : task)));
   };
 
   const handleUpdateTime = (id: string, time: string) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, time } : task
-    ));
+    setTasks(tasks.map((task) => (task.id === id ? { ...task, time } : task)));
   };
 
   const handleUpdateMessage = (id: string, message: string) => {
-    setTasks(tasks.map(task => 
-      task.id === id ? { ...task, message } : task
-    ));
+    setTasks(
+      tasks.map((task) => (task.id === id ? { ...task, message } : task))
+    );
   };
 
   const handleAddTask = () => {
@@ -280,20 +313,20 @@ export function PersonalizedDialoguePage({ onBack }: PersonalizedDialoguePagePro
       newTaskInputRef.current?.focus();
       return;
     }
-    
+
     const newTask = {
       id: Date.now().toString(),
       message: newTaskText,
       time: "12:00",
       days: [],
-      isChecked: false
+      isChecked: false,
     };
     setTasks([...tasks, newTask]);
     setNewTaskText("");
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       handleAddTask();
     }
   };
@@ -302,47 +335,52 @@ export function PersonalizedDialoguePage({ onBack }: PersonalizedDialoguePagePro
   const encouragementExamples = [
     "You're amazing! Keep up the great effort!",
     "You practiced so well today, great job!",
-    "If you fail, it's okay! Every time you try, you get stronger."
+    "If you fail, it's okay! Every time you try, you get stronger.",
   ];
 
   const ethicalExamples = [
     "Be kind to your friends and help them.",
     "When you borrow something, remember to return it on time.",
-    "If you make a mistake, it's okay! Just always take responsibility for it."
+    "If you make a mistake, it's okay! Just always take responsibility for it.",
   ];
 
   const parentalExamples = [
     "Mommy and Daddy always love you and are proud of you!",
-    "Don't forget, you can always ask me for help whenever you need it."
+    "Don't forget, you can always ask me for help whenever you need it.",
   ];
 
   return (
     <div className="fixed inset-0 z-50">
       {/* Full screen background with linear gradient */}
-      <div 
-        className="absolute inset-0" 
+      <div
+        className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to bottom, #e8fbff, white)'
+          background: "linear-gradient(to bottom, #e8fbff, white)",
         }}
       />
 
       {/* Safe area content */}
       <SafeArea>
-        <div className="relative w-full h-full flex flex-col p-6">
+        <div className="relative w-full h-auto flex flex-col p-6 clickable overflow-scroll">
           {/* Header with back button and title */}
           <div className="flex items-center mt-8 mb-10">
             <button
               onClick={onBack}
-              className="w-12 h-12 mr-4 transition-transform hover:scale-110"
+              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img 
-                src="/svg/control-panel-back.svg" 
+              <img
+                src="/svg/control-panel-back.svg"
                 alt="Back"
                 className="w-full h-full object-contain"
-                style={{ filter: "invert(47%) sepia(82%) saturate(2258%) hue-rotate(166deg) brightness(95%) contrast(101%)" }}
+                style={{
+                  filter:
+                    "invert(47%) sepia(82%) saturate(2258%) hue-rotate(166deg) brightness(95%) contrast(101%)",
+                }}
               />
             </button>
-            <h2 className="text-3xl font-bold text-[#16BDFF]">Personalized Dialogue Page</h2>
+            <h2 className="text-3xl font-bold text-[#16BDFF]">
+              Personalized Dialogue Page
+            </h2>
           </div>
 
           {/* Content */}
@@ -350,61 +388,74 @@ export function PersonalizedDialoguePage({ onBack }: PersonalizedDialoguePagePro
             <div className="max-w-2xl mx-auto">
               {/* Conversation Tone Options */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">1. Conversation Tone Options</h3>
-                
+                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                  1. Conversation Tone Options
+                </h3>
+
                 <div className="flex flex-wrap gap-4 justify-left">
-                  <ToggleOption 
-                    label="Formal" 
-                    isSelected={selectedTone === 'formal'} 
-                    onClick={() => setSelectedTone('formal')} 
+                  <ToggleOption
+                    label="Formal"
+                    isSelected={selectedTone === "formal"}
+                    onClick={() => setSelectedTone("formal")}
                   />
-                  <ToggleOption 
-                    label="Casual" 
-                    isSelected={selectedTone === 'casual'} 
-                    onClick={() => setSelectedTone('casual')} 
+                  <ToggleOption
+                    label="Casual"
+                    isSelected={selectedTone === "casual"}
+                    onClick={() => setSelectedTone("casual")}
                   />
-                  <ToggleOption 
-                    label="Educational" 
-                    isSelected={selectedTone === 'educational'} 
-                    onClick={() => setSelectedTone('educational')} 
+                  <ToggleOption
+                    label="Educational"
+                    isSelected={selectedTone === "educational"}
+                    onClick={() => setSelectedTone("educational")}
                   />
                 </div>
               </div>
 
               {/* Conversation Reports Frequency */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl text-[#1F2020] mb-2">2. Conversation Reports Frequency</h3>
-                <p className="text-gray-600 mb-6">Stay informed about your child's interactions with Panda</p>
-                
-                <Dropdown 
-                  title="Daily" 
+                <h3 className="text-2xl text-[#1F2020] mb-2">
+                  2. Conversation Reports Frequency
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  Stay informed about your child's interactions with Panda
+                </p>
+
+                <Dropdown
+                  title="Daily"
                   date={formattedToday}
-                  description="No Data" 
+                  description="No Data"
                 />
-                
-                <Dropdown 
-                  title="Weekly" 
+
+                <Dropdown
+                  title="Weekly"
                   date={formattedWeekRange}
-                  description="You can enter specific sentences for the character to say to the child in You can enter specific sentences for the character to." 
+                  description="You can enter specific sentences for the character to say to the child in You can enter specific sentences for the character to."
                 />
               </div>
 
               {/* Custom Message Setup */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl text-[#1F2020] mb-2">3. Custom Message Setup</h3>
+                <h3 className="text-2xl text-[#1F2020] mb-2">
+                  3. Custom Message Setup
+                </h3>
                 <p className="text-gray-600 mb-6">
-                  Personalize your child's experience by choosing or creating tailored messages for reminders, encouragement, behavior, and more at specific times.
+                  Personalize your child's experience by choosing or creating
+                  tailored messages for reminders, encouragement, behavior, and
+                  more at specific times.
                 </p>
-                
+
                 {/* Daily Reminders Section */}
                 <div className="mb-8">
-                  <h4 className="text-xl font-medium text-[#1F2020] mb-2">1.Daily Reminders</h4>
+                  <h4 className="text-xl font-medium text-[#1F2020] mb-2">
+                    1.Daily Reminders
+                  </h4>
                   <p className="text-gray-600 mb-4">
-                    Set Daily reminders by choosing or adding your own message, and set the date and time.
+                    Set Daily reminders by choosing or adding your own message,
+                    and set the date and time.
                   </p>
-                  
+
                   {/* Daily Tasks */}
-                  {tasks.map(task => (
+                  {tasks.map((task) => (
                     <DailyTask
                       key={task.id}
                       id={task.id}
@@ -419,10 +470,11 @@ export function PersonalizedDialoguePage({ onBack }: PersonalizedDialoguePagePro
                       onUpdateMessage={handleUpdateMessage}
                     />
                   ))}
-                  
+
                   {/* Add new task input */}
                   <div className="flex mb-4">
-                    <div className="mr-4 w-6"></div> {/* Spacer to align with tasks */}
+                    <div className="mr-4 w-6"></div>{" "}
+                    {/* Spacer to align with tasks */}
                     <div className="flex-1 bg-white rounded-xl p-4 shadow-md border-2 border-dashed border-[#229654]">
                       <div className="flex items-center">
                         <input
@@ -445,24 +497,24 @@ export function PersonalizedDialoguePage({ onBack }: PersonalizedDialoguePagePro
                     </div>
                   </div>
                 </div>
-                
+
                 {/* Encouragement & Motivational Messages Section */}
-                <SimpleMessageSection 
-                  title="2.Encouragement & Motivational Messages" 
+                <SimpleMessageSection
+                  title="2.Encouragement & Motivational Messages"
                   subtitle="Send inspiring and positive messages to motivate your child and boost their confidence."
                   examples={encouragementExamples}
                 />
-                
+
                 {/* Ethical & Behavioral Messages Section */}
-                <SimpleMessageSection 
-                  title="3.Ethical & Behavioral Messages" 
+                <SimpleMessageSection
+                  title="3.Ethical & Behavioral Messages"
                   subtitle="Provide gentle guidance on ethics and good behavior with tailored messages that reinforce positive values."
                   examples={ethicalExamples}
                 />
-                
+
                 {/* Personalized Parental Messages Section */}
-                <SimpleMessageSection 
-                  title="4.Personalized Parental Messages" 
+                <SimpleMessageSection
+                  title="4.Personalized Parental Messages"
                   subtitle="Craft custom messages to connect with your child personally, offering support and love based on their needs."
                   examples={parentalExamples}
                 />
