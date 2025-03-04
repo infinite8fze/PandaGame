@@ -10,6 +10,7 @@ import {
   BedroomIcon,
   GameRoomIcon,
   KitchenIcon,
+  ParentIcon,
   SchoolIcon,
 } from "../icons";
 interface RoomButtonsProps {
@@ -62,22 +63,34 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
 
           {/* Parent Room Button - Only show when not in parent room */}
           {currentRoom !== "parent" && (
-            <button
-              onClick={() => setCurrentRoom("parent")}
-              className="clickable absolute top-4 right-4 z-20 w-28 h-28 transition-transform hover:scale-110"
-            >
-              <div
-                className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-                style={{ backgroundImage: "url(/images/parent-frame.png)" }}
-              />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <img
-                  src="/svg/parent.svg"
-                  alt="Parent Room"
-                  className="w-12 h-12"
-                />
-              </div>
-            </button>
+            <div className="absolute top-4 right-4 z-20 w-28 h-40 transition-transform hover:scale-110">
+                     <BubbleButton 
+            bgColor = "bg-gradient-to-t from-[#FF711F] to-[#FFC301]"
+            icon={ParentIcon}
+            isActive={false}
+            onClick={() => setCurrentRoom("parent")
+          }
+          />
+            </div>
+     
+            // <button
+            //   onClick={() => setCurrentRoom("parent")}
+            //   className="clickable absolute top-4 right-4 z-20 w-28 h-28 transition-transform hover:scale-110"
+            // >
+              
+
+            //   <div
+            //     className="absolute inset-0 bg-contain bg-center bg-no-repeat"
+            //     style={{ backgroundImage: "url(/images/parent-frame.png)" }}
+            //   />
+            //    <div className="absolute inset-0 flex items-center justify-center">
+            //     <img
+            //       src="/svg/parent.svg"
+            //       alt="Parent Room"
+            //       className="w-12 h-12"
+            //     />
+            //   </div>
+            // </button>
           )}
 
           {/* Back to Game Room Button - Only show in parent room */}
@@ -111,14 +124,14 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
               </button> */}
               <button
                 className="clickable absolute top-20 left-1/2 -translate-x-1/2 w-64 h-20
-                transition-transform hover:scale-105 px-6 py-2 text-2xl  font-bold text-blue-800 bg-gradient-to-b from-white to-blue-200 border-4 border-blue-800 rounded-full
+                transition-transform hover:scale-105 px-6 py-2 text-2xl  font-bold text-customization-icon bg-gradient-to-b from-white to-blue-200 border-4 border-customization-icon rounded-full
                 border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"
               >
                 Customization
               </button>
               <button
                 className="clickable absolute top-44 left-1/2 -translate-x-1/2 w-64 h-20
-                transition-transform hover:scale-105 px-6 py-2 text-2xl border-4 border-purple-800 rounded-full font-bold text-purple-800 bg-gradient-to-b from-white to-purple-200
+                transition-transform hover:scale-105 px-6 py-2 text-2xl border-4 border-progressCenter-icon rounded-full font-bold text-progressCenter-icon bg-gradient-to-b from-white to-purple-200
                 border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"
               >
                 Progress Center
@@ -146,40 +159,22 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
           )}
 
           {/* Microphone Button */}
-          <div className="absolute bottom-36 left-1/2 transform -translate-x-1/2 z-10">
-            <button
-              onMouseDown={handleMicMouseDown}
+          <div  className=" clickable absolute bottom-36 left-1/2 transform -translate-x-1/2 z-10">
+          <button  onMouseDown={handleMicMouseDown}
               onMouseUp={handleMicMouseUp}
               onMouseLeave={handleMicMouseUp}
               onTouchStart={handleMicMouseDown}
               onTouchEnd={handleMicMouseUp}
-              className={`w-24 h-24 relative flex items-center justify-center transition-transform ${
-                !isSupported
-                  ? "opacity-50 cursor-not-allowed"
-                  : isRecording
-                  ? "scale-110"
-                  : "hover:scale-105"
-              }`}
               title={
                 isSupported
                   ? "Press and hold to record"
                   : "Speech recognition not supported"
               }
               disabled={!isSupported}
-            >
-              {/* Mic Frame Background - Different for parent room */}
-              <div
-                className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-                style={{
-                  backgroundImage:
-                    currentRoom === "parent"
-                      ? "url(/images/parent-mic-frame.png)"
-                      : "url(/images/mic-frame.png)",
-                }}
-              />
-
-              {/* Icon */}
-              <div className="relative z-10">
+               className="relative flex items-center justify-center w-24 h-24 relative p-4 rounded-full bg-gradient-to-b from-yellow-400 to-orange-500 shadow-lg hover:scale-105 transition-transform">
+                <div className="absolute inset-1 rounded-full border-2 border-orange-500"></div>
+             <div className="absolute inset-0 rounded-full border-4 border-white"></div>
+             <div className="relative z-10">
                 {isLoading ? (
                   <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
                 ) : isRecording ? (
@@ -188,7 +183,7 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
                   <MicOff className="w-8 h-8 text-gray-800" />
                 )}
               </div>
-            </button>
+          </button>
           </div>
 
           {/* Free Trial Button - Only in parent room */}
