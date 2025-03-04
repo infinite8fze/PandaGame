@@ -15,8 +15,15 @@ import {
 interface RoomButtonsProps {
   currentRoom?: string;
   setCurrentRoom: Dispatch<SetStateAction<string>>;
+  showControlPanel?: boolean;
+  setShowControlPanel: Dispatch<SetStateAction<boolean>>;
 }
-const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
+const RoomsButtons = ({
+  currentRoom,
+  setCurrentRoom,
+  showControlPanel,
+  setShowControlPanel,
+}: RoomButtonsProps) => {
   const rooms = [
     { id: "gameroom", name: "Playroom", icon: GameRoomIcon },
     { id: "kitchen", name: "Kitchen", icon: KitchenIcon },
@@ -35,7 +42,6 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
   } = useAudio(currentRoom);
   const [currentLevel, setCurrentLevel] = useState(1);
   const [coins, setCoins] = useState(150);
-  const [showControlPanel, setShowControlPanel] = useState(false);
 
   const handleMicMouseDown = () => {
     startRecording();
@@ -110,6 +116,7 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
                 </span>
               </button> */}
               <button
+                onClick={() => setShowControlPanel(true)}
                 className="clickable absolute top-20 left-1/2 -translate-x-1/2 w-64 h-20
                 transition-transform hover:scale-105 px-6 py-2 text-2xl  font-bold text-blue-800 bg-gradient-to-b from-white to-blue-200 border-4 border-blue-800 rounded-full
                 border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"

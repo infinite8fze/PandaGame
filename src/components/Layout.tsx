@@ -23,6 +23,7 @@ export function Layout({ background, roomObjects, children }: LayoutProps) {
         </div>
       </SafeArea>
       {children}
+      
     </div>
   );
 }

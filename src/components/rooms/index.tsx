@@ -23,7 +23,7 @@ const Rooms = () => {
     lastMessage,
     isSupported,
   } = useAudio(currentRoom);
-
+  const [showControlPanel, setShowControlPanel] = useState(false);
   {
     /* HANDLE ROOM CHANGING FOR PANDA ANIMATION */
   }
@@ -67,9 +67,14 @@ const Rooms = () => {
         <RoomsButtons
           currentRoom={currentRoom}
           setCurrentRoom={setCurrentRoom}
+          showControlPanel={showControlPanel}
+          setShowControlPanel={setShowControlPanel}
         />
       </SafeArea>
       {/* Parent Control Panel */}
+      {showControlPanel && (
+        <ParentControlPanel onClose={() => setShowControlPanel(false)} />
+      )}
     </div>
   );
 };
