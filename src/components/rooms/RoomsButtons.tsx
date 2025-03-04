@@ -64,7 +64,7 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
           {currentRoom !== "parent" && (
             <button
               onClick={() => setCurrentRoom("parent")}
-              className="absolute top-4 right-4 z-20 w-28 h-28 transition-transform hover:scale-110"
+              className="clickable absolute top-4 right-4 z-20 w-28 h-28 transition-transform hover:scale-110"
             >
               <div
                 className="absolute inset-0 bg-contain bg-center bg-no-repeat"
@@ -84,7 +84,7 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
           {currentRoom === "parent" && (
             <button
               onClick={() => setCurrentRoom("gameroom")}
-              className="absolute top-4 left-4 z-20 w-16 h-16 transition-transform hover:scale-110"
+              className="clickable absolute top-4 left-4 z-20 w-16 h-16 transition-transform hover:scale-110"
             >
               <div
                 className="absolute inset-0 bg-contain bg-center bg-no-repeat"

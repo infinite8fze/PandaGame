@@ -26,6 +26,17 @@ export default {
         "green-button": "linear-gradient(to bottom, #33DE44, #6AFF52)",
         "red-button": "linear-gradient(to bottom, #DE3333, #FF6129)",
       },
+      colors: {
+        'custom-lightBlue': '#16BDFF',
+        'custom-blue':'#6A6AF1',
+        'custom-purple':'#C065FE',
+        'custom-orange':'#FF9818',
+        'custom-yellow':'#FFDE6B',
+        'custom-lightGreen':'#A9DC35',
+        'custom-green':'#229654',
+        'custom-gray':'#B0BDD4',
+        'custom-pink':'#FE8EEB'
+      }
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
