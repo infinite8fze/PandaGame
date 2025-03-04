@@ -35,7 +35,9 @@ export default {
         'custom-lightGreen':'#A9DC35',
         'custom-green':'#229654',
         'custom-gray':'#B0BDD4',
-        'custom-pink':'#FE8EEB'
+        'custom-pink':'#FE8EEB',
+        'progressCenter-icon':'#9E009E',
+        'customization-icon':'#4C3BAC'
       }
     },
   },
