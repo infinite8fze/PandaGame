@@ -12,7 +12,7 @@ interface LayoutProps {
   room?: string;
 }
 
-export function Layout({ background, roomObjects }: LayoutProps) {
+export function Layout({ background, roomObjects, children }: LayoutProps) {
   return (
     <div className="relative w-full h-full">
       {/* Layer 1-3: Background (floors, walls, carpets) */}
@@ -22,6 +22,7 @@ export function Layout({ background, roomObjects }: LayoutProps) {
           {roomObjects}
         </div>
       </SafeArea>
+      {children}
     </div>
   );
 }

@@ -15,7 +15,7 @@ export function RoomBackground({ room, translateY }: RoomBackgroundProps) {
         style={{
           backgroundImage: `url(/images/rooms/${room}/wall.png)`,
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          backgroundPosition: "center bottom",
           backgroundRepeat: "no-repeat",
           zIndex: 1,
         }}

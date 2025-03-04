@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RoomBackground } from "./RoomBackground";
 import { Layout } from "../Layout";
 import { MinigameButton } from "../minigames/MinigameButton";
@@ -18,6 +18,9 @@ export function Playroom({ children, character }: PlayroomProps) {
     setCurrentGameUrl(url);
     setIsMinigameModalOpen(false);
   };
+  useEffect(() => {
+    console.log("🚀 ~ Playroom ~ isMinigameModalOpen:", isMinigameModalOpen);
+  }, [isMinigameModalOpen]);
   const roomObjects = (
     <>
       {/* Left side - Game chair and minigame button */}

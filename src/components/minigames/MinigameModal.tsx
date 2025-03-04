@@ -1,5 +1,5 @@
-import React from 'react';
-import { SafeArea } from '../SafeArea';
+import React from "react";
+import { SafeArea } from "../SafeArea";
 
 interface Game {
   id: string;
@@ -17,53 +17,57 @@ interface MinigameModalProps {
 // Mock data for games - added more games to better demonstrate the grid
 const mockGames: Game[] = [
   {
-    id: '1',
-    title: 'Color Recognation',
-    imageUrl: '/images/mini-game/Color.png',
-    url: 'https://previews.customer.envatousercontent.com/files/590179399/index.html'
+    id: "1",
+    title: "Color Recognation",
+    imageUrl: "/images/mini-game/Color.png",
+    url: "https://previews.customer.envatousercontent.com/files/590179399/index.html",
   },
   {
-    id: '2',
-    title: 'Fast Counting',
-    imageUrl: '/images/mini-game/Fast.png',
-    url: 'https://www.htmlgames.com/game/Cube+Block'
+    id: "2",
+    title: "Fast Counting",
+    imageUrl: "/images/mini-game/Fast.png",
+    url: "https://www.htmlgames.com/game/Cube+Block",
   },
   {
-    id: '3',
-    title: 'Jigsaw',
-    imageUrl: '/images/mini-game/Jigsaw.png',
-    url: 'https://www.htmlgames.com/game/Find+the+Odd+One+Out'
+    id: "3",
+    title: "Jigsaw",
+    imageUrl: "/images/mini-game/Jigsaw.png",
+    url: "https://www.htmlgames.com/game/Find+the+Odd+One+Out",
   },
   {
-    id: '4',
-    title: 'Match Three',
-    imageUrl: '/images/mini-game/Match-three.jpg',
-    url: 'https://www.htmlgames.com/game/Slide+Wood'
+    id: "4",
+    title: "Match Three",
+    imageUrl: "/images/mini-game/Match-three.jpg",
+    url: "https://www.htmlgames.com/game/Slide+Wood",
   },
   {
-    id: '5',
-    title: 'Word Game',
-    imageUrl: '/images/mini-game/Word-game.png',
-    url: 'https://www.htmlgames.com/game/Christmas+Match+3'
+    id: "5",
+    title: "Word Game",
+    imageUrl: "/images/mini-game/Word-game.png",
+    url: "https://www.htmlgames.com/game/Christmas+Match+3",
   },
   {
-    id: '6',
-    title: 'Writing',
-    imageUrl: '/images/mini-game/Writing.png',
-    url: 'https://www.htmlgames.com/game/Christmas+Match+3'
-  }
+    id: "6",
+    title: "Writing",
+    imageUrl: "/images/mini-game/Writing.png",
+    url: "https://www.htmlgames.com/game/Christmas+Match+3",
+  },
 ];
 
-export function MinigameModal({ isOpen, onClose, onSelectGame }: MinigameModalProps) {
+export function MinigameModal({
+  isOpen,
+  onClose,
+  onSelectGame,
+}: MinigameModalProps) {
   if (!isOpen) return null;
 
   return (
     <div className="fixed inset-0 z-50">
       {/* Full screen gradient background */}
-      <div 
+      <div
         className="absolute inset-0"
         style={{
-          background: 'linear-gradient(to top, #00DFE8, #008FB2)'
+          background: "linear-gradient(to top, #00DFE8, #008FB2)",
         }}
       />
 
@@ -75,8 +79,8 @@ export function MinigameModal({ isOpen, onClose, onSelectGame }: MinigameModalPr
             onClick={onClose}
             className="absolute top-4 right-4 w-8 h-8 transition-transform hover:scale-110"
           >
-            <img 
-              src="/images/Close.png" 
+            <img
+              src="/images/Close.png"
               alt="Close"
               className="w-full h-full object-contain"
             />
@@ -97,8 +101,8 @@ export function MinigameModal({ isOpen, onClose, onSelectGame }: MinigameModalPr
                   className="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105 p-4"
                 >
                   <div className="aspect-video w-full">
-                    <img 
-                      src={game.imageUrl} 
+                    <img
+                      src={game.imageUrl}
                       alt={game.title}
                       width={266}
                       className="rounded-xl"

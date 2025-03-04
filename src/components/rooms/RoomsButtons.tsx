@@ -109,16 +109,20 @@ const RoomsButtons = ({ currentRoom, setCurrentRoom }: RoomButtonsProps) => {
                   Customization
                 </span>
               </button> */}
-                <button className="absolute top-20 left-1/2 -translate-x-1/2 w-64 h-20
+              <button
+                className="clickable absolute top-20 left-1/2 -translate-x-1/2 w-64 h-20
                 transition-transform hover:scale-105 px-6 py-2 text-2xl  font-bold text-blue-800 bg-gradient-to-b from-white to-blue-200 border-4 border-blue-800 rounded-full
-                border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all">
-                  Customization
-                </button>
-                <button className="absolute top-44 left-1/2 -translate-x-1/2 w-64 h-20
+                border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"
+              >
+                Customization
+              </button>
+              <button
+                className="clickable absolute top-44 left-1/2 -translate-x-1/2 w-64 h-20
                 transition-transform hover:scale-105 px-6 py-2 text-2xl border-4 border-purple-800 rounded-full font-bold text-purple-800 bg-gradient-to-b from-white to-purple-200
-                border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all">
-                  Progress Center
-                </button>
+                border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"
+              >
+                Progress Center
+              </button>
               {/* Progress Center Button */}
               {/* <button className="absolute top-40 left-1/2 -translate-x-1/2 w-64 h-24 transition-transform hover:scale-105">
                 <div
