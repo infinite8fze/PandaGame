@@ -12,6 +12,7 @@ import {
   KitchenIcon,
   ParentIcon,
   SchoolIcon,
+  KingIcon
 } from "../icons";
 interface RoomButtonsProps {
   currentRoom?: string;
@@ -77,6 +78,7 @@ const RoomsButtons = ({
             onClick={() => setCurrentRoom("parent")
           }
           />
+          <div><KingIcon></KingIcon></div>
             </div>
      
             // <button
