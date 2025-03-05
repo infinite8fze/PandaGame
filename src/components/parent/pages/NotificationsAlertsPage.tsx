@@ -20,7 +20,7 @@ function FeatureOption({
     <div className="flex items-start mb-6">
       <button
         onClick={onToggle}
-        className={`px-4 py-3 rounded-[30px] transition-all duration-200 flex items-center mr-4 ${
+        className={`clickable px-4 py-3 rounded-[30px] transition-all duration-200 flex items-center mr-4 ${
           isEnabled
             ? "bg-[#FF9E2D] text-white"
             : "bg-white text-[#1F2020] border-2 border-[#FF9E2D]"
@@ -154,19 +154,19 @@ export function NotificationsAlertsPage({
                   5. Notification Preferences
                 </h3>
 
-                <div className="bg-white p-6 rounded-xl shadow-sm border border-[#FFE0B2]">
+                <div className=" bg-white p-6 rounded-xl shadow-sm border border-[#FFE0B2]">
                   <div className="mb-4">
                     <h4 className="text-lg font-bold text-[#1F2020] mb-2">
                       Notification Method
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      <button className="px-4 py-2 bg-[#FF9E2D] text-white rounded-lg font-medium">
+                      <button className="clickable px-4 py-2 bg-[#FF9E2D] text-white rounded-lg font-medium">
                         Email
                       </button>
-                      <button className="px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
+                      <button className="clickable px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
                         Push Notification
                       </button>
-                      <button className="px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
+                      <button className="clickable px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
                         SMS
                       </button>
                     </div>
@@ -177,13 +177,13 @@ export function NotificationsAlertsPage({
                       Notification Frequency
                     </h4>
                     <div className="flex flex-wrap gap-3">
-                      <button className="px-4 py-2 bg-[#FF9E2D] text-white rounded-lg font-medium">
+                      <button className="clickable px-4 py-2 bg-[#FF9E2D] text-white rounded-lg font-medium">
                         Immediate
                       </button>
-                      <button className="px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
+                      <button className="clickable px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
                         Daily Digest
                       </button>
-                      <button className="px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
+                      <button className="clickable px-4 py-2 bg-white text-[#1F2020] border border-[#FF9E2D] rounded-lg font-medium">
                         Weekly Summary
                       </button>
                     </div>
