@@ -12,6 +12,7 @@ import {
   KitchenIcon,
   ParentIcon,
   SchoolIcon,
+  KingIcon
 } from "../icons";
 interface RoomButtonsProps {
   currentRoom?: string;
@@ -77,6 +78,7 @@ const RoomsButtons = ({
             onClick={() => setCurrentRoom("parent")
           }
           />
+          <div><KingIcon className="w-6 h-6 relative top-[-98px] left-7 text-[#FEDA0C]"></KingIcon></div>
             </div>
      
             // <button
@@ -132,14 +134,14 @@ const RoomsButtons = ({
                 onClick={() => setShowControlPanel(true)}
                 className="clickable absolute top-20 left-1/2 -translate-x-1/2 w-64 h-20
                 transition-transform hover:scale-105 px-6 py-2 text-2xl  font-bold text-customization-icon bg-gradient-to-b from-white to-blue-200 border-4 border-customization-icon rounded-full
-                border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"
+                border-customization-icon rounded-full shadow-md hover:bg-purple-100 transition-all"
               >
                 Customization
               </button>
               <button
                 className="clickable absolute top-44 left-1/2 -translate-x-1/2 w-64 h-20
                 transition-transform hover:scale-105 px-6 py-2 text-2xl border-4 border-progressCenter-icon rounded-full font-bold text-progressCenter-icon bg-gradient-to-b from-white to-purple-200
-                border-purple-500 rounded-full shadow-md hover:bg-purple-100 transition-all"
+                border-progressCenter-icon rounded-full shadow-md hover:bg-purple-100 transition-all"
               >
                 Progress Center
               </button>
@@ -156,7 +158,8 @@ const RoomsButtons = ({
                 </span>
               </button> */}
             </>
-          )}
+          )
+          }
 
           {/* Level Button - Now shown in all rooms except parent room */}
           {currentRoom !== "parent" && (
@@ -166,7 +169,9 @@ const RoomsButtons = ({
           )}
 
           {/* Microphone Button */}
-          <div  className=" clickable absolute bottom-36 left-1/2 transform -translate-x-1/2 z-10">
+  
+                  {currentRoom !== "parent"&&(      
+                  <div  className=" clickable absolute bottom-36 left-1/2 transform -translate-x-1/2 z-10">
           <button  onMouseDown={handleMicMouseDown}
               onMouseUp={handleMicMouseUp}
               onMouseLeave={handleMicMouseUp}
@@ -185,14 +190,39 @@ const RoomsButtons = ({
                 {isLoading ? (
                   <Loader2 className="w-8 h-8 text-blue-500 animate-spin" />
                 ) : isRecording ? (
-                  <Mic className="w-8 h-8 text-red-500" />
+                  <Mic className="w-8 h-8 text-red-500 " />
                 ) : (
                   <MicOff className="w-8 h-8 text-gray-800" />
                 )}
               </div>
           </button>
-          </div>
-
+        </div>)}
+        {currentRoom === "parent" && (     <div  className=" clickable absolute bottom-36 left-1/2 transform -translate-x-1/2 z-10">
+          <button  onMouseDown={handleMicMouseDown}
+              onMouseUp={handleMicMouseUp}
+              onMouseLeave={handleMicMouseUp}
+              onTouchStart={handleMicMouseDown}
+              onTouchEnd={handleMicMouseUp}
+              title={
+                isSupported
+                  ? "Press and hold to record"
+                  : "Speech recognition not supported"
+              }
+              disabled={!isSupported}
+               className="relative flex items-center justify-center w-24 h-24 relative p-4 rounded-full bg-gradient-to-b from-[#29A0D4] to-[#A8E2EE] shadow-lg hover:scale-105 transition-transform">
+                <div className="absolute inset-1 rounded-full border-2 border-[#0D5386]"></div>
+             <div className="absolute inset-0 rounded-full border-4 border-white"></div>
+             <div className="relative z-10">
+                {isLoading ? (
+                  <Loader2 className="w-8 h-8 text-[#0D5386] animate-spin" />
+                ) : isRecording ? (
+                  <Mic className="w-8 h-8 text-red-500 " />
+                ) : (
+                  <MicOff className="w-8 h-8 text-gray-800" />
+                )}
+              </div>
+          </button>
+        </div>)}
           {/* Free Trial Button - Only in parent room */}
           {currentRoom === "parent" && (
             <button className="absolute bottom-5 left-1/2 -translate-x-1/2 w-64 h-32 transition-transform hover:scale-105">
