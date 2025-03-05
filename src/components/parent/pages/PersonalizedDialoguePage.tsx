@@ -10,25 +10,9 @@ interface ToggleOptionProps {
 
 function ToggleOption({ label, isSelected, onClick }: ToggleOptionProps) {
   return (
-    // <button onClick={onClick} className={`relative`}>
-    //   <svg
-    //     width="100%"
-    //     height="100%"
-    //     viewBox="0 0 200 60"
-    //     xmlns="http://www.w3.org/2000/svg"
-    //   >
-    //     <path
-    //       d="M10,30 Q10,10 30,10 H170 Q190,10 190,30 V30 Q190,50 170,50 H30 Q10,50 10,30 Z"
-    //       fill={` ${isSelected ? "#16BDFF" : "#16BDFF"}`}
-    //     />
-    //   </svg>
-    //   <span className="absolute inset-0 flex items-center justify-center text-white font-bold">
-    //     {label}
-    //   </span>
-    // </button>
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-[20px] transition-all duration-200 ${
+      className={`clickable px-6 py-3 rounded-[20px] transition-all duration-200 ${
         isSelected
           ? "bg-[#16BDFF] text-white"
           : "bg-white text-[#16BDFF] border border-[#16BDFF]"
@@ -52,7 +36,7 @@ function Dropdown({ title, date, description }: DropdownProps) {
     <div className="mb-4">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full bg-white rounded-xl p-4 flex items-center justify-between shadow-md border-2 border-[#B3E4EF]"
+        className="clickable w-full bg-white rounded-xl p-4 flex items-center justify-between shadow-md border-2 border-[#B3E4EF]"
       >
         <div className="flex items-center">
           <Calendar className="w-6 h-6 mr-3 text-[#16BDFF]" />
@@ -85,7 +69,7 @@ function DayButton({ day, isSelected, onClick }: DayButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+      className={`clickable w-8 h-8 rounded-full flex items-center justify-center transition-all ${
         isSelected
           ? "bg-green-500 text-white"
           : "bg-white text-black border border-gray-300"
@@ -147,13 +131,13 @@ function DailyTask({
       <div className="mr-4 flex flex-col items-center">
         <button
           onClick={() => onToggleCheck(id)}
-          className="w-6 h-6 border-2 border-gray-400 rounded flex items-center justify-center mb-4"
+          className="clickable w-6 h-6 border-2 border-gray-400 rounded flex items-center justify-center mb-4"
         >
           {isChecked && <Check className="w-4 h-4 text-green-500" />}
         </button>
         <button
           onClick={() => onDelete(id)}
-          className="text-[#BFC7E1] hover:text-[#9DA5C9]"
+          className="clickable text-[#BFC7E1] hover:text-[#9DA5C9]"
         >
           <img
             src="/svg/remove.svg"
@@ -173,7 +157,7 @@ function DailyTask({
               type="text"
               value={editedMessage}
               onChange={(e) => setEditedMessage(e.target.value)}
-              className="w-full p-2 border border-gray-300 rounded"
+              className="clickable w-full p-2 border border-gray-300 rounded"
               autoFocus
               onBlur={handleMessageSave}
               onKeyDown={(e) => e.key === "Enter" && handleMessageSave()}
@@ -361,12 +345,12 @@ export function PersonalizedDialoguePage({
 
       {/* Safe area content */}
       <SafeArea>
-        <div className="relative w-full h-auto flex flex-col p-6 clickable overflow-scroll">
+        <div className="relative w-full h-full flex flex-col">
           {/* Header with back button and title */}
-          <div className="flex items-center mt-8 mb-10">
+          <div className="flex items-center mt-8 mb-10 px-6">
             <button
               onClick={onBack}
-              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
+              className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
             >
               <img
                 src="/svg/control-panel-back.svg"
@@ -378,17 +362,17 @@ export function PersonalizedDialoguePage({
                 }}
               />
             </button>
-            <h2 className="text-3xl font-bold text-[#16BDFF]">
+            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#16BDFF]">
               Personalized Dialogue Page
             </h2>
           </div>
 
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 scrollbar-custom">
+          {/* Scrollable content */}
+          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
             <div className="max-w-2xl mx-auto">
               {/* Conversation Tone Options */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   1. Conversation Tone Options
                 </h3>
 
