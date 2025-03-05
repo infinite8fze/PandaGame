@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { SafeArea } from "../../SafeArea";
 import { Bell } from "lucide-react";
+import { ControlPanelIcon } from "../../icons";
 
 interface FeatureOptionProps {
   title: string;
@@ -25,15 +26,21 @@ function FeatureOption({
             : "bg-white text-[#1F2020] border-2 border-[#FF9E2D]"
         }`}
       >
-        <div className="w-5 h-5">
+        <div className="extra-sm:w-3 extra-sm:h-3 md:w-5 md:h-5">
           {isEnabled && (
-            <img src="/svg/checked.svg" alt="Enabled" className="w-5 h-5" />
+            <img
+              src="/svg/checked.svg"
+              alt="Enabled"
+              className="extra-sm:w-3 extra-sm:h-3 md:w-5 md:h-5"
+            />
           )}
         </div>
       </button>
       <div className="flex-1">
         <h4 className="text-lg font-bold text-[#1F2020] mb-1">{title}</h4>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-gray-600 extra-sm:text-sm md:text-lg">
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -71,34 +78,21 @@ export function NotificationsAlertsPage({
               onClick={onBack}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img
-                src="/svg/control-panel-back.svg"
-                alt="Back"
-                className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "invert(65%) sepia(54%) saturate(1552%) hue-rotate(346deg) brightness(101%) contrast(101%)",
-                }}
-              />
+              <ControlPanelIcon />
             </button>
-            <h2 className="text-3xl font-bold text-[#FF9E2D]">
+            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#FF9E2D]">
               Notifications & Alerts
             </h2>
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 scrollbar-custom">
+          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
             <div className="max-w-2xl mx-auto">
               {/* Description */}
-              <p className="text-[#1F2020] text-lg mb-10 flex items-center">
-                <Bell className="w-6 h-6 mr-2 text-[#FF9E2D]" />
-                Configure how and when you receive notifications about your
-                child's activity
-              </p>
 
               {/* Excessive Use */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   1. Excessive Use
                 </h3>
 
@@ -112,7 +106,7 @@ export function NotificationsAlertsPage({
 
               {/* Inappropriate Content */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   2. Inappropriate Content
                 </h3>
 
@@ -128,7 +122,7 @@ export function NotificationsAlertsPage({
 
               {/* Weekly Report Summary */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   3. Weekly Report Summary
                 </h3>
 
@@ -142,7 +136,7 @@ export function NotificationsAlertsPage({
 
               {/* Extra Time for Children */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   4. Extra Time for Children
                 </h3>
 
@@ -156,7 +150,7 @@ export function NotificationsAlertsPage({
 
               {/* Notification Preferences */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   5. Notification Preferences
                 </h3>
 
@@ -195,13 +189,6 @@ export function NotificationsAlertsPage({
                     </div>
                   </div>
                 </div>
-              </div>
-
-              {/* Save Button */}
-              <div className="flex justify-center mt-8 mb-12">
-                <button className="bg-[#FF9E2D] text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-[#E08D26] transition-colors shadow-lg">
-                  Save Notification Settings
-                </button>
               </div>
             </div>
           </div>
