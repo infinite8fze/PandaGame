@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { SafeArea } from "../../SafeArea";
 import { Clock } from "lucide-react";
+import { ControlPanelIcon } from "../../icons";
 
 interface DayButtonProps {
   day: string;
@@ -13,13 +14,13 @@ function DayButton({ day, label, isSelected, onClick }: DayButtonProps) {
   return (
     <button
       onClick={onClick}
-      className={`w-12 h-12 rounded-xl flex items-center justify-center transition-all duration-200 ${
+      className={`extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-200 clickable  ${
         isSelected
           ? "bg-[#229654] text-white"
           : "bg-white text-[#1F2020] border-2 border-[#229654]"
       }`}
     >
-      <span className="font-bold text-lg">{label}</span>
+      <span className="font-bold extra-sm:text-sm md:text-lg">{label}</span>
     </button>
   );
 }
@@ -34,7 +35,7 @@ function CheckboxOption({ label, isSelected, onClick }: CheckboxOptionProps) {
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-[30px] transition-all duration-200 flex items-center ${
+      className={`px-6 py-3 rounded-[30px] transition-all duration-200 flex items-center clickable ${
         isSelected
           ? "bg-[#229654] text-white"
           : "bg-white text-[#1F2020] border-2 border-[#229654]"
@@ -67,21 +68,27 @@ function FeatureOption({
     <div className="flex items-start mb-6">
       <button
         onClick={onToggle}
-        className={`px-4 py-3 rounded-[30px] transition-all duration-200 flex items-center mr-4 ${
+        className={`px-4 py-3 rounded-[30px] transition-all duration-200 flex items-center mr-4 clickable ${
           isEnabled
             ? "bg-[#229654] text-white"
             : "bg-white text-[#1F2020] border-2 border-[#229654]"
         }`}
       >
-        <div className="w-5 h-5">
+        <div className="extra-sm:w-3 extra-sm:h-3 md:w-5 md:h-5 ">
           {isEnabled && (
-            <img src="/svg/checked.svg" alt="Enabled" className="w-5 h-5" />
+            <img
+              src="/svg/checked.svg"
+              alt="Enabled"
+              className="extra-sm:w-3 extra-sm:h-3 md:w-5 md:h-5"
+            />
           )}
         </div>
       </button>
       <div className="flex-1">
         <h4 className="text-lg font-bold text-[#1F2020] mb-1">{title}</h4>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-gray-600 extra-sm:text-sm md:text-lg">
+          {description}
+        </p>
       </div>
     </div>
   );
@@ -208,11 +215,9 @@ export function AccessRestrictionsPage({
 
     // Calculate angle in radians, then convert to degrees
     // Use Math.atan2 to get the correct angle in all quadrants
-    let angle = Math.atan2(y, Math.abs(x)) * (180 / Math.PI);
-
-    // Adjust angle based on which side of the arc we're on
-    if (x < 0) {
-      angle = 180 - angle;
+    let angle = Math.atan2(y, x) * (180 / Math.PI); // Remove Math.abs(x)
+    if (angle < 0) {
+      angle += 180; // Ensure the angle remains positive
     }
 
     // Clamp angle between 0 and 180 degrees
@@ -242,29 +247,21 @@ export function AccessRestrictionsPage({
               onClick={onBack}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img
-                src="/svg/control-panel-back.svg"
-                alt="Back"
-                className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "invert(35%) sepia(93%) saturate(1103%) hue-rotate(101deg) brightness(92%) contrast(101%)",
-                }}
-              />
+              <ControlPanelIcon />
             </button>
-            <h2 className="text-3xl font-bold text-[#229654]">
+            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#229654]">
               Access Restrictions
             </h2>
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 scrollbar-custom">
+          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
             <div className="max-w-2xl mx-auto">
-              <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+              <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                 1. Usage Restrictions
               </h3>
               {/* Description */}
-              <p className="text-[#1F2020] text-lg mb-10">
+              <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-10">
                 Set specific dates and time periods for game usage to ensure
                 balanced playtime.
               </p>
@@ -277,7 +274,7 @@ export function AccessRestrictionsPage({
                     <svg
                       ref={svgRef}
                       viewBox="0 0 200 100"
-                      className="w-full h-full cursor-pointer"
+                      className="w-full h-full cursor-pointer clickable"
                       onMouseDown={handleMouseDown}
                       onTouchStart={handleTouchStart}
                       onTouchMove={handleTouchMove}
@@ -341,7 +338,7 @@ export function AccessRestrictionsPage({
 
               {/* Day Selection */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6 text-center">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6 text-center">
                   Allowed Days
                 </h3>
 
@@ -360,10 +357,10 @@ export function AccessRestrictionsPage({
 
               {/* Device Restrictions */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   2. Device Restrictions
                 </h3>
-                <p className="text-[#1F2020] text-lg mb-6">
+                <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-6">
                   Choose the devices your child can use to access the game.
                 </p>
 
@@ -381,7 +378,7 @@ export function AccessRestrictionsPage({
 
               {/* Feature Access Restrictions */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   3. Feature Access Restrictions
                 </h3>
 
@@ -397,7 +394,7 @@ export function AccessRestrictionsPage({
 
               {/* Remote Parental Control */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   4. Remote Parental Control
                 </h3>
 
@@ -409,13 +406,6 @@ export function AccessRestrictionsPage({
                     setRemoteControlEnabled(!remoteControlEnabled)
                   }
                 />
-              </div>
-
-              {/* Save Button */}
-              <div className="flex justify-center mt-8 mb-12">
-                <button className="bg-[#229654] text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-[#1b7a44] transition-colors shadow-lg">
-                  Save Restrictions
-                </button>
               </div>
             </div>
           </div>
