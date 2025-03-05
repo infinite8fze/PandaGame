@@ -38,6 +38,10 @@ const BubbleButton = ({
             <stop offset="0%" stopColor="#FF711F" />
             <stop offset="100%" stopColor="#FFC301" />
           </linearGradient>
+          <linearGradient id="darkGreenGradiant" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#CAE04B" />
+            <stop offset="100%" stopColor="#A2D339" />
+          </linearGradient>
           <linearGradient
             id="borderOrangeGradient"
             x1="0%"
