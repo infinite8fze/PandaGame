@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SafeArea } from "../../SafeArea";
+import { ControlPanelIcon } from "../../icons";
 
 interface ToggleOptionProps {
   label: string;
@@ -11,7 +12,7 @@ function ToggleOption({ label, isSelected, onClick }: ToggleOptionProps) {
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-[30px] transition-all duration-200 ${
+      className={`px-6 py-3 rounded-[30px] transition-all duration-200 extra-sm:text-ms md:text-lg clickable ${
         isSelected
           ? "bg-[#6A6AF1] text-white"
           : "bg-white text-[#6A6AF1] border border-[#6A6AF1]"
@@ -32,7 +33,7 @@ function CheckboxOption({ label, isSelected, onClick }: CheckboxOptionProps) {
   return (
     <button
       onClick={onClick}
-      className={`px-6 py-3 rounded-[30px] transition-all duration-200 flex items-center ${
+      className={`px-6 py-3 rounded-[30px] transition-all duration-200 flex items-center extra-sm:text-ms md:text-lg clickable ${
         isSelected
           ? "bg-[#6A6AF1] text-white"
           : "bg-white text-[#6A6AF1] border border-[#6A6AF1]"
@@ -91,19 +92,11 @@ export function LearningLevelSettingsPage({
           <div className="flex items-center mt-8 mb-10">
             <button
               onClick={onBack}
-              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
+              className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img
-                src="/svg/control-panel-back.svg"
-                alt="Back"
-                className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "invert(35%) sepia(58%) saturate(2573%) hue-rotate(230deg) brightness(101%) contrast(98%)",
-                }}
-              />
+              <ControlPanelIcon />
             </button>
-            <h2 className="text-3xl font-bold text-[#6A6AF1]">
+            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#6A6AF1]">
               Learning Level Settings
             </h2>
           </div>
@@ -112,14 +105,14 @@ export function LearningLevelSettingsPage({
           <div className="flex-1 overflow-y-auto px-4 scrollbar-custom">
             <div className="max-w-2xl mx-auto">
               {/* Description */}
-              <p className="text-[#1F2020] text-lg mb-10">
+              <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-10">
                 Content is set by age by default, but parents can adjust
                 difficulty for a personalized learning experience
               </p>
 
               {/* Difficulty Level Selection */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   1. Difficulty Level Selection
                 </h3>
 
@@ -144,7 +137,7 @@ export function LearningLevelSettingsPage({
 
               {/* Subjects Selection */}
               <div className="p-6 mb-8">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-6">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
                   2. Subjects Selection
                 </h3>
 
@@ -175,13 +168,6 @@ export function LearningLevelSettingsPage({
                     onClick={() => handleSubjectToggle("art")}
                   />
                 </div>
-              </div>
-
-              {/* Save Button */}
-              <div className="flex justify-center mt-8">
-                <button className="bg-[#6A6AF1] text-white px-8 py-3 rounded-lg text-xl font-bold hover:bg-[#5959D9] transition-colors">
-                  Save Settings
-                </button>
               </div>
             </div>
           </div>
