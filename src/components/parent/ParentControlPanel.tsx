@@ -6,6 +6,7 @@ import { LearningLevelSettingsPage } from "./pages/LearningLevelSettingsPage";
 import { AccessRestrictionsPage } from "./pages/AccessRestrictionsPage";
 import { NotificationsAlertsPage } from "./pages/NotificationsAlertsPage";
 import { ProgressCenterPage } from "./pages/ProgressCenterPage";
+import { ControlPanelIcon } from "../icons";
 
 interface ParentControlPanelProps {
   onClose: () => void;
@@ -108,21 +109,18 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       <SafeArea>
         <div className="relative w-full h-full flex flex-col p-6">
           {/* Back button */}
-          <button
-            onClick={onClose}
-            className="clickable absolute top-4 left-4 w-16 h-16 transition-transform hover:scale-110"
-          >
-            <div
-              className="absolute inset-0 bg-contain bg-center bg-no-repeat"
-              style={{ backgroundImage: "url(/images/home.png)" }}
-            />
-          </button>
-
-          {/* Title */}
-          <div className="text-center mt-16 mb-8">
-            <h2 className="text-4xl font-bold text-[#3E3E3E] drop-shadow-lg">
-              Parent Control Panel
-            </h2>
+          <div className="flex items-center mt-0 mb-10 px-6">
+            <button
+              onClick={onClose}
+              className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
+            >
+              <ControlPanelIcon  />
+            </button>
+            <div className="text-center mb-8">
+              <h2 className="extra-sm:text-2xl md:text-4xl font-bold text-[#3E3E3E] drop-shadow-lg mt-8">
+                Parent Control Panel
+              </h2>
+            </div>
           </div>
 
           {/* Control Panel Cards */}

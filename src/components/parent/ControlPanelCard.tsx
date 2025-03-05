@@ -34,7 +34,7 @@ export function ControlPanelCard({
   return (
     <button
       onClick={onClick}
-      className="clickable w-full h-40 flex items-center p-4 rounded-xl mb-4 transition-transform hover:scale-105 active:scale-95 relative overflow-hidden"
+      className="clickable w-full extra-sm:h-32 md:h-40 flex items-center p-4 rounded-xl mb-4 transition-transform hover:scale-105 active:scale-95 relative overflow-hidden"
       style={{
         boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
       }}
@@ -49,14 +49,14 @@ export function ControlPanelCard({
       />
 
       {/* Icon */}
-      <div className="w-32 h-32 flex-shrink-0 mr-4 relative z-10 flex items-center justify-center">
+      <div className="extra-sm:w-20 extra-sm:h-20 md:w-32 md:h-32 flex-shrink-0 mr-4 relative z-10 flex items-center justify-center">
         <img src={icon} alt={title} className="w-full h-full object-contain" />
       </div>
 
       {/* Title */}
       <div className="flex-1 relative z-10">
         <h3
-          className="text-[32px] font-bold text-left leading-tight flex flex-col"
+          className="extra-sm:text-xl md:text-2xl font-bold text-left leading-tight flex flex-col"
           style={{ color: titleColor }}
         >
           {formatTitle(title)}
