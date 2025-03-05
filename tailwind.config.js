@@ -41,6 +41,10 @@ export default {
         "green-button": "linear-gradient(to bottom, #33DE44, #6AFF52)",
       },
     },
+    screens: {
+      "extra-sm": "279px",
+      md: "768px",
+    },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
 };

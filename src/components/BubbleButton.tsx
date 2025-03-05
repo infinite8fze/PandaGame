@@ -4,32 +4,53 @@ interface SvgIconProps {
   height?: number;
   className?: string;
   bgColor: string;
+  borderColor: string;
   isActive: boolean;
   icon: React.ElementType;
+  onClick: () => Void;
 }
 const BubbleButton = ({
   width = 100,
   height = 100,
   className = "",
   icon: Icon,
+  onClick,
+  bgColor,
+  borderColor = "defaultBorder",
 }) => {
   return (
-    <div className="w-full relative inset-0">
+    <button onClick={onClick} className="clickable w-full relative inset-0">
       <svg
         version="1.1"
         id="Layer_1"
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
         y="0px"
-        width={width}
-        height={height}
         viewBox="0 0 204 204"
-        className={"relative "}
+        className={`relative extra-sm:w-[4rem] extra-sm:h-[4rem] md:w-[6.25rem] md:h-[6.25rem]`}
       >
         <defs>
           <linearGradient id="greenGradient" x1="0%" y1="0%" x2="0%" y2="100%">
             <stop offset="0%" stopColor="#33DE44" />
             <stop offset="100%" stopColor="#6AFF52" />
+          </linearGradient>
+          <linearGradient id="orangeGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#FF711F" />
+            <stop offset="100%" stopColor="#FFC301" />
+          </linearGradient>
+          <linearGradient
+            id="borderOrangeGradient"
+            x1="0%"
+            y1="0%"
+            x2="0%"
+            y2="100%"
+          >
+            <stop offset="0%" stopColor="#FED906" />
+            <stop offset="100%" stopColor="#FFFFFF" />
+          </linearGradient>
+          <linearGradient id="defaultBorder" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stopColor="#FFFFFF" />
+            <stop offset="100%" stopColor="#FFFFFF" />
           </linearGradient>
         </defs>
         <style type="text/css">
@@ -48,12 +69,12 @@ const BubbleButton = ({
           />
         </g>
         <path
-          className="st1"
+          fill={`url(#${borderColor})`}
           d="M84.4,198.6c-20.3,0-54.4,0-73.8-35.8C-2.6,138.5,0,85.6,3.4,60.9c8-60.1,56.4-60.1,91.9-60.1h14
         c35.2,0,83.8,0,91.9,60.1c3.4,24.6,6,77.2-7.2,101.9c-19.5,35.8-53.5,35.8-73.8,35.8C119.9,198.6,84.4,198.6,84.4,198.6z"
         />
         <path
-          fill="url(#greenGradient)"
+          fill={`url(#${bgColor})`}
           d="M190,61.2C183.7,14.9,153.3,12,109.3,12H94.7C50.9,12,20.3,14.9,14,61.2c-4.3,32.6-4,78.7,5.7,97
         c17.2,31.5,46.9,29.2,74.7,29.2H109c27.8,0,57.5,2.6,74.7-29.2C194,139.9,194.2,93.8,190,61.2z"
         />
@@ -84,7 +105,7 @@ const BubbleButton = ({
       {Icon && (
         <Icon className="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2" />
       )}
-    </div>
+    </button>
   );
 };
 

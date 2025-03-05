@@ -3,9 +3,12 @@ import React from "react";
 const BathroomIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 62.26 83.05"
-    xmlns="http://www.w3.org/2000/svg">
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path d="M57.63,8.94c-.78,6.81-1.56,13.56-2.33,20.17A75.58,75.58,0,0,0,7,29.12L4.63,8.94Z" />
     <path d="M4.5,40.46c6.24,3.63,13,4.63,19.86,5.23a80.64,80.64,0,0,0,18.37-.52,41.28,41.28,0,0,0,13.44-3.84c.49-.25.95-.54,1.64-.94-.22,1.46-.36,2.76-.63,4C56,50.09,53.53,55,48.86,58.64a24.4,24.4,0,0,1-11.71,4.69,38.31,38.31,0,0,1-15.59-.75C12.92,60.22,7.7,54.51,5.44,46c-.31-1.18-.5-2.38-.71-3.58C4.62,41.79,4.59,41.18,4.5,40.46Z" />
     <path d="M48.22,62.83c.14,1.36.3,2.79.44,4.22Q49.35,73.88,50,80.7c.19,1.82-.28,2.35-2.14,2.35H14.2c-1.62,0-2.14-.56-2-2.18q.85-8.73,1.74-17.44c0-.23.09-.45.12-.59C25.47,68.14,36.79,68.12,48.22,62.83Z" />
@@ -16,21 +19,25 @@ const BathroomIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const BedroomIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 84.64 83.93"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M31.13,26.44A79.41,79.41,0,0,0,0,32.43v19L16.33,46.6l.41-.81c1.13-5.17,2.6-7.77,6.19-8.57a43.91,43.91,0,0,1,15.34,0c3.89.87,5.29,3.85,6.46,9.94l17.53,4.29v-19A79.41,79.41,0,0,0,31.13,26.44Z" />
-    <polygon points="72.83 46.54 77.57 42.44 77.97 40.93 71.61 39.25 71.02 41.47 74.11 42.29 69.34 46.4 68.95 47.89 75.71 49.68 76.3 47.46 72.83 46.54"/>
-    <polygon points="53.84 17.98 66.51 9.48 67.93 5.96 53.07 0 50.99 5.18 58.21 8.08 45.47 16.61 44.08 20.08 59.87 26.41 61.95 21.23 53.84 17.98"/>
-    <polygon points="74.11 30.18 83.66 23.15 84.64 20.36 72.89 16.24 71.45 20.34 77.16 22.34 67.55 29.4 66.59 32.15 79.08 36.53 80.52 32.43 74.11 30.18"/>
+    <polygon points="72.83 46.54 77.57 42.44 77.97 40.93 71.61 39.25 71.02 41.47 74.11 42.29 69.34 46.4 68.95 47.89 75.71 49.68 76.3 47.46 72.83 46.54" />
+    <polygon points="53.84 17.98 66.51 9.48 67.93 5.96 53.07 0 50.99 5.18 58.21 8.08 45.47 16.61 44.08 20.08 59.87 26.41 61.95 21.23 53.84 17.98" />
+    <polygon points="74.11 30.18 83.66 23.15 84.64 20.36 72.89 16.24 71.45 20.34 77.16 22.34 67.55 29.4 66.59 32.15 79.08 36.53 80.52 32.43 74.11 30.18" />
     <path d="M31.13,52.31A79.41,79.41,0,0,0,0,58.3V83.93H5.74l4.58-6.41A146.35,146.35,0,0,0,31.13,79h0a146.2,146.2,0,0,0,20.8-1.46l4.59,6.41h5.74V58.3A79.41,79.41,0,0,0,31.13,52.31Z" />
   </svg>
 );
 const CalenderIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 56 55"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -67,7 +74,9 @@ const CalenderIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const CheckedIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 39 32"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -80,7 +89,9 @@ const CheckedIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const ControlPanelIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 83 53"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -93,7 +104,9 @@ const ControlPanelIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const GameRoomIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 79.47 80.88"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -104,7 +117,9 @@ const GameRoomIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const KitchenIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 73.51 83.89"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -115,7 +130,9 @@ const KitchenIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const ParentIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 139 111"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -140,7 +157,9 @@ const ParentIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const RemoveIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 49 49"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -157,21 +176,24 @@ const RemoveIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
 const SchoolIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
   <svg
     {...props}
-    className={`w-6 h-6 fill-current text-[#005900] ${props.className || ""}`}
+    className={`extra-sm:w-6 extra-sm:h-6 md:w-12 md:h-12  fill-current text-[#005900] ${
+      props.className || ""
+    }`}
     viewBox="0 0 77.9 83.92"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path d="M48.2,60.84A9.12,9.12,0,0,1,31,60.57c-9.4,3-15.72,11.28-18.5,21.15a1.75,1.75,0,0,0,1.73,2.2h50a1.75,1.75,0,0,0,1.72-2.2C63.21,72.13,57.16,64.08,48.2,60.84Z" />
-    <path d="M77.43,14.1,40.73.32a5.07,5.07,0,0,0-3.56,0L.46,14.1a.71.71,0,0,0,0,1.33L4.59,17V30.72H4.06a.76.76,0,0,0-.76.76V39.8a.76.76,0,0,0,.76.76H5.13a.76.76,0,0,0,.75-.76V33.37H7.5V39.8a.76.76,0,0,0,.76.76H9.33a.76.76,0,0,0,.76-.76V31.48a.76.76,0,0,0-.76-.76H9V18.63l5.92,2.23v8.69A23.77,23.77,0,1,0,62.2,33c0-.6,0-1.19-.07-1.78l0-5.69a22.94,22.94,0,0,0-.39-4.26l15.67-5.88A.71.71,0,0,0,77.43,14.1Zm-39,37.22a18.21,18.21,0,0,1-11.11-3.77c-5.71-4.61-4.8-12.78-2.93-16.9a4.5,4.5,0,0,1,7.65-1c3.65,4.6,12.34,5.77,18.56,2.73a.47.47,0,0,0,.25-.49.46.46,0,0,0-.37-.4A4.64,4.64,0,0,1,46.58,27l.06,0c6.84.29,9.43,3.39,9.75,9.42A18.28,18.28,0,0,1,38.43,51.32Z"/>
+    <path d="M77.43,14.1,40.73.32a5.07,5.07,0,0,0-3.56,0L.46,14.1a.71.71,0,0,0,0,1.33L4.59,17V30.72H4.06a.76.76,0,0,0-.76.76V39.8a.76.76,0,0,0,.76.76H5.13a.76.76,0,0,0,.75-.76V33.37H7.5V39.8a.76.76,0,0,0,.76.76H9.33a.76.76,0,0,0,.76-.76V31.48a.76.76,0,0,0-.76-.76H9V18.63l5.92,2.23v8.69A23.77,23.77,0,1,0,62.2,33c0-.6,0-1.19-.07-1.78l0-5.69a22.94,22.94,0,0,0-.39-4.26l15.67-5.88A.71.71,0,0,0,77.43,14.1Zm-39,37.22a18.21,18.21,0,0,1-11.11-3.77c-5.71-4.61-4.8-12.78-2.93-16.9a4.5,4.5,0,0,1,7.65-1c3.65,4.6,12.34,5.77,18.56,2.73a.47.47,0,0,0,.25-.49.46.46,0,0,0-.37-.4A4.64,4.64,0,0,1,46.58,27l.06,0c6.84.29,9.43,3.39,9.75,9.42A18.28,18.28,0,0,1,38.43,51.32Z" />
   </svg>
 );
 const KingIcon: React.FC<React.SVGProps<SVGSVGElement>> = (props) => (
-  <svg 
-  {...props} 
-  className={`fill-current text-[#005900] ${props.className || ""}`}
-    viewBox="0 0 75 45" xmlns="http://www.w3.org/2000/svg">
-    
-  <path  d="M10.6471 45L6.24125 21.9784C5.91618 22.0459 5.57111 22.0822 5.22104 22.0822C2.33547 22.0822 0 19.6534 0 16.6642C0 13.6697 2.33547 11.2409 5.22104 11.2409C8.10662 11.2409 10.4421 13.6697 10.4421 16.6642C10.4421 18.3923 9.66193 19.9389 8.44169 20.9301C10.5721 23.3018 13.7628 26.2029 18.0436 28.367C25.7802 32.2748 32.2665 25.113 36.2322 10.6856C33.9618 10.0992 32.2765 7.96621 32.2765 5.42844C32.2765 2.4236 34.6119 0 37.4975 0C40.3831 0 42.7185 2.4236 42.7185 5.41806C42.7185 7.95583 41.0332 10.0888 38.7628 10.6752C42.7285 25.1026 49.2148 32.2696 56.9514 28.3566C61.2322 26.1925 64.4229 23.2914 66.5533 20.9197C65.3331 19.9285 64.5529 18.3872 64.5529 16.6538C64.5529 13.6593 66.8934 11.2305 69.779 11.2305C72.6645 11.2305 75 13.6593 75 16.6538C75 19.6483 72.6645 22.077 69.779 22.077C69.4289 22.077 69.0888 22.0407 68.7588 21.9732L64.3529 44.9948H10.6471V45Z"/>
+  <svg
+    {...props}
+    className={`fill-current text-[#005900] ${props.className || ""}`}
+    viewBox="0 0 75 45"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M10.6471 45L6.24125 21.9784C5.91618 22.0459 5.57111 22.0822 5.22104 22.0822C2.33547 22.0822 0 19.6534 0 16.6642C0 13.6697 2.33547 11.2409 5.22104 11.2409C8.10662 11.2409 10.4421 13.6697 10.4421 16.6642C10.4421 18.3923 9.66193 19.9389 8.44169 20.9301C10.5721 23.3018 13.7628 26.2029 18.0436 28.367C25.7802 32.2748 32.2665 25.113 36.2322 10.6856C33.9618 10.0992 32.2765 7.96621 32.2765 5.42844C32.2765 2.4236 34.6119 0 37.4975 0C40.3831 0 42.7185 2.4236 42.7185 5.41806C42.7185 7.95583 41.0332 10.0888 38.7628 10.6752C42.7285 25.1026 49.2148 32.2696 56.9514 28.3566C61.2322 26.1925 64.4229 23.2914 66.5533 20.9197C65.3331 19.9285 64.5529 18.3872 64.5529 16.6538C64.5529 13.6593 66.8934 11.2305 69.779 11.2305C72.6645 11.2305 75 13.6593 75 16.6538C75 19.6483 72.6645 22.077 69.779 22.077C69.4289 22.077 69.0888 22.0407 68.7588 21.9732L64.3529 44.9948H10.6471V45Z" />
   </svg>
 );
 export {
@@ -185,5 +207,5 @@ export {
   CalenderIcon,
   BedroomIcon,
   BathroomIcon,
-  KingIcon
+  KingIcon,
 };
