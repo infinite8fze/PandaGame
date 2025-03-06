@@ -94,13 +94,7 @@ function FeatureOption({
   );
 }
 
-interface AccessRestrictionsPageProps {
-  onBack: () => void;
-}
-
-export function AccessRestrictionsPage({
-  onBack,
-}: AccessRestrictionsPageProps) {
+export function AccessRestrictionsPage() {
   const [timeLimit, setTimeLimit] = useState(120); // in minutes
   const [selectedDays, setSelectedDays] = useState<string[]>([
     "mon",
@@ -229,188 +223,155 @@ export function AccessRestrictionsPage({
   };
 
   return (
-    <div className="fixed inset-0 z-50">
-      {/* Full screen background with linear gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to bottom, #e8fff0, white)",
-        }}
-      />
+      <div className="max-w-2xl mx-auto">
+        <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
+          1. Usage Restrictions
+        </h3>
+        {/* Description */}
+        <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-10">
+          Set specific dates and time periods for game usage to ensure balanced
+          playtime.
+        </p>
 
-      {/* Safe area content */}
-      <SafeArea>
-        <div className="relative w-full h-full flex flex-col p-6">
-          {/* Header with back button and title */}
-          <div className="flex items-center mt-8 mb-10">
-            <button
-              onClick={onBack}
-              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
-            >
-              <ControlPanelIcon className="fill-[#229654]" />
-            </button>
-            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#229654]">
-              Access Restrictions
-            </h2>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
-            <div className="max-w-2xl mx-auto">
-              <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
-                1. Usage Restrictions
-              </h3>
-              {/* Description */}
-              <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-10">
-                Set specific dates and time periods for game usage to ensure
-                balanced playtime.
-              </p>
-
-              {/* Time Limit Selector */}
-              <div className="p-6 mb-12">
-                <div className="relative w-full max-w-md mx-auto h-64">
-                  {/* Semi-circular gauge background */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
-                    <svg
-                      ref={svgRef}
-                      viewBox="0 0 200 100"
-                      className="w-full h-full cursor-pointer clickable"
-                      onMouseDown={handleMouseDown}
-                      onTouchStart={handleTouchStart}
-                      onTouchMove={handleTouchMove}
-                      onTouchEnd={handleTouchEnd}
-                    >
-                      {/* Gray background arc */}
-                      <path
-                        d="M10,100 A90,90 0 0,1 190,100"
-                        fill="none"
-                        stroke="#E0E0E0"
-                        strokeWidth="12"
-                        strokeLinecap="round"
-                      />
-
-                      {/* Green active arc */}
-                      <path
-                        d="M10,100 A90,90 0 0,1 190,100"
-                        fill="none"
-                        stroke="#229654"
-                        strokeWidth="12"
-                        strokeLinecap="round"
-                        strokeDasharray="282.6"
-                        strokeDashoffset={282.6 - (arcAngle / 180) * 282.6}
-                      />
-
-                      {/* Invisible touch area that follows the arc path */}
-                      <path
-                        d="M10,100 A90,90 0 0,1 190,100"
-                        fill="none"
-                        stroke="transparent"
-                        strokeWidth="30"
-                        strokeLinecap="round"
-                        style={{ cursor: "pointer" }}
-                      />
-
-                      {/* Draggable handle - positioned along the arc */}
-                      <circle
-                        cx={handleX}
-                        cy={handleY}
-                        r="12"
-                        fill="#229654"
-                        stroke="#FFFFFF"
-                        strokeWidth="3"
-                        style={{ cursor: "pointer" }}
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Time display in center */}
-                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 text-center">
-                    <div className="text-4xl font-bold text-[#229654]">
-                      {hours.toString().padStart(2, "0")} Hours
-                    </div>
-                    <div className="text-xl text-[#229654]">in Day</div>
-                    <div className="text-lg text-[#FF5252] mt-2">
-                      {remainingTime} min Left
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Day Selection */}
-              <div className="p-6 mb-8">
-                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6 text-center">
-                  Allowed Days
-                </h3>
-
-                <div className="flex justify-center gap-3">
-                  {days.map((day) => (
-                    <DayButton
-                      key={day.key}
-                      day={day.key}
-                      label={day.label}
-                      isSelected={selectedDays.includes(day.key)}
-                      onClick={() => handleDayToggle(day.key)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Device Restrictions */}
-              <div className="p-6 mb-8">
-                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
-                  2. Device Restrictions
-                </h3>
-                <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-6">
-                  Choose the devices your child can use to access the game.
-                </p>
-
-                <div className="flex flex-wrap gap-4 justify-center">
-                  {devices.map((device) => (
-                    <CheckboxOption
-                      key={device.key}
-                      label={device.label}
-                      isSelected={selectedDevices.includes(device.key)}
-                      onClick={() => handleDeviceToggle(device.key)}
-                    />
-                  ))}
-                </div>
-              </div>
-
-              {/* Feature Access Restrictions */}
-              <div className="p-6 mb-8">
-                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
-                  3. Feature Access Restrictions
-                </h3>
-
-                <FeatureOption
-                  title="External Content Sharing"
-                  description="Restrict the ability to send links and images to external sources to maintain a controlled and safe experience for your child"
-                  isEnabled={externalLinksRestricted}
-                  onToggle={() =>
-                    setExternalLinksRestricted(!externalLinksRestricted)
-                  }
+        {/* Time Limit Selector */}
+        <div className="p-6 mb-12">
+          <div className="relative w-full max-w-md mx-auto h-64">
+            {/* Semi-circular gauge background */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full">
+              <svg
+                ref={svgRef}
+                viewBox="0 0 200 100"
+                className="w-full h-full cursor-pointer clickable"
+                onMouseDown={handleMouseDown}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                {/* Gray background arc */}
+                <path
+                  d="M10,100 A90,90 0 0,1 190,100"
+                  fill="none"
+                  stroke="#E0E0E0"
+                  strokeWidth="12"
+                  strokeLinecap="round"
                 />
-              </div>
 
-              {/* Remote Parental Control */}
-              <div className="p-6 mb-8">
-                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
-                  4. Remote Parental Control
-                </h3>
-
-                <FeatureOption
-                  title="Remote Management"
-                  description="Manage settings and review activities remotely through the parental control panel, accessible via the app or web dashboard."
-                  isEnabled={remoteControlEnabled}
-                  onToggle={() =>
-                    setRemoteControlEnabled(!remoteControlEnabled)
-                  }
+                {/* Green active arc */}
+                <path
+                  d="M10,100 A90,90 0 0,1 190,100"
+                  fill="none"
+                  stroke="#229654"
+                  strokeWidth="12"
+                  strokeLinecap="round"
+                  strokeDasharray="282.6"
+                  strokeDashoffset={282.6 - (arcAngle / 180) * 282.6}
                 />
+
+                {/* Invisible touch area that follows the arc path */}
+                <path
+                  d="M10,100 A90,90 0 0,1 190,100"
+                  fill="none"
+                  stroke="transparent"
+                  strokeWidth="30"
+                  strokeLinecap="round"
+                  style={{ cursor: "pointer" }}
+                />
+
+                {/* Draggable handle - positioned along the arc */}
+                <circle
+                  cx={handleX}
+                  cy={handleY}
+                  r="12"
+                  fill="#229654"
+                  stroke="#FFFFFF"
+                  strokeWidth="3"
+                  style={{ cursor: "pointer" }}
+                />
+              </svg>
+            </div>
+
+            {/* Time display in center */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 text-center">
+              <div className="text-4xl font-bold text-[#229654]">
+                {hours.toString().padStart(2, "0")} Hours
+              </div>
+              <div className="text-xl text-[#229654]">in Day</div>
+              <div className="text-lg text-[#FF5252] mt-2">
+                {remainingTime} min Left
               </div>
             </div>
           </div>
         </div>
-      </SafeArea>
-    </div>
+
+        {/* Day Selection */}
+        <div className="p-6 mb-8">
+          <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6 text-center">
+            Allowed Days
+          </h3>
+
+          <div className="flex justify-center gap-3">
+            {days.map((day) => (
+              <DayButton
+                key={day.key}
+                day={day.key}
+                label={day.label}
+                isSelected={selectedDays.includes(day.key)}
+                onClick={() => handleDayToggle(day.key)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Device Restrictions */}
+        <div className="p-6 mb-8">
+          <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
+            2. Device Restrictions
+          </h3>
+          <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-6">
+            Choose the devices your child can use to access the game.
+          </p>
+
+          <div className="flex flex-wrap gap-4 justify-center">
+            {devices.map((device) => (
+              <CheckboxOption
+                key={device.key}
+                label={device.label}
+                isSelected={selectedDevices.includes(device.key)}
+                onClick={() => handleDeviceToggle(device.key)}
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* Feature Access Restrictions */}
+        <div className="p-6 mb-8">
+          <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
+            3. Feature Access Restrictions
+          </h3>
+
+          <FeatureOption
+            title="External Content Sharing"
+            description="Restrict the ability to send links and images to external sources to maintain a controlled and safe experience for your child"
+            isEnabled={externalLinksRestricted}
+            onToggle={() =>
+              setExternalLinksRestricted(!externalLinksRestricted)
+            }
+          />
+        </div>
+
+        {/* Remote Parental Control */}
+        <div className="p-6 mb-8">
+          <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-6">
+            4. Remote Parental Control
+          </h3>
+
+          <FeatureOption
+            title="Remote Management"
+            description="Manage settings and review activities remotely through the parental control panel, accessible via the app or web dashboard."
+            isEnabled={remoteControlEnabled}
+            onToggle={() => setRemoteControlEnabled(!remoteControlEnabled)}
+          />
+        </div>
+      </div>
   );
 }

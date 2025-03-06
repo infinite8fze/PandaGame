@@ -228,13 +228,8 @@ function SimpleMessageSection({
   );
 }
 
-interface PersonalizedDialoguePageProps {
-  onBack: () => void;
-}
 
-export function PersonalizedDialoguePage({
-  onBack,
-}: PersonalizedDialoguePageProps) {
+export function PersonalizedDialoguePage() {
   const [selectedTone, setSelectedTone] = useState<
     "formal" | "casual" | "educational"
   >("educational");
@@ -353,7 +348,7 @@ export function PersonalizedDialoguePage({
               onClick={onBack}
               className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
             >
-            <ControlPanelIcon className="fill-[#16BDFF]" />
+              <ControlPanelIcon className="fill-[#16BDFF]" />
             </button>
             <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#16BDFF]">
               Personalized Dialogue Page

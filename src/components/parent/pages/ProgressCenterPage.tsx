@@ -320,11 +320,7 @@ function DonutChart({ data }: DonutChartProps) {
   );
 }
 
-interface ProgressCenterPageProps {
-  onBack: () => void;
-}
-
-export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
+export function ProgressCenterPage() {
   const [chartData, setChartData] = useState({
     abc: [20, 35, 45, 30, 50, 70, 85],
     math: [30, 40, 35, 45, 60, 55, 75],
@@ -383,7 +379,7 @@ export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
               onClick={onBack}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-           <ControlPanelIcon className="fill-[#E16C78]" />
+              <ControlPanelIcon className="fill-[#E16C78]" />
             </button>
             <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#E16C78]">
               Progress Center

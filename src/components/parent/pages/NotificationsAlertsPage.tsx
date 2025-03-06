@@ -46,13 +46,9 @@ function FeatureOption({
   );
 }
 
-interface NotificationsAlertsPageProps {
-  onBack: () => void;
-}
 
-export function NotificationsAlertsPage({
-  onBack,
-}: NotificationsAlertsPageProps) {
+
+export function NotificationsAlertsPage() {
   const [excessiveUseEnabled, setExcessiveUseEnabled] = useState(true);
   const [inappropriateContentEnabled, setInappropriateContentEnabled] =
     useState(true);
