@@ -35,7 +35,7 @@ export function Scene() {
           far={1000}
         />
 
-        <ambientLight intensity={0.6} />
+        <ambientLight intensity={0.9} />
         <directionalLight
           castShadow
           position={[0, 0, 4]}
@@ -50,7 +50,7 @@ export function Scene() {
           shadow-bias={-0.001}
         />
         <directionalLight position={[-2, 2, 1]} intensity={0.5} />
-        <directionalLight position={[2, 2, 1]} intensity={0.2} />
+        <directionalLight position={[2, 2, 1]} intensity={0.5} />
         <directionalLight position={[0, 0, -1]} intensity={0.1} />
 
         <Suspense fallback={null}>
