@@ -8,10 +8,12 @@ interface LevelButtonProps {
 }
 const LevelIcon=()=> {
   return(<div className="absolute inset-0 flex items-center justify-center">
-           <span className="text-[50px] font-bold text-[#607E37] drop-shadow-lg">
+           <span className="extra-sm:text-4xl md:text-6xl font-bold text-[#607E37] drop-shadow-lg">
              {4}
           </span>
-          <span className="text-[10px] font-bold text-[#607E37] drop-shadow-lg translate-y-4">
+          <span className="extra-sm:text-sm md:text-lg font-bold
+           text-[#607E37] drop-shadow-lg extra-sm:translate-y-2 
+           md:translate-y-4">
              LVL
            </span>
           
