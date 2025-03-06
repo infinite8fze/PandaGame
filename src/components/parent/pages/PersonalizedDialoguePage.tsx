@@ -1,6 +1,7 @@
 import React, { useState, useRef } from "react";
 import { SafeArea } from "../../SafeArea";
 import { ChevronDown, ChevronUp, Calendar, Check, Plus } from "lucide-react";
+import { ControlPanelIcon } from "../../icons";
 
 interface ToggleOptionProps {
   label: string;
@@ -352,15 +353,7 @@ export function PersonalizedDialoguePage({
               onClick={onBack}
               className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img
-                src="/svg/control-panel-back.svg"
-                alt="Back"
-                className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "invert(47%) sepia(82%) saturate(2258%) hue-rotate(166deg) brightness(95%) contrast(101%)",
-                }}
-              />
+            <ControlPanelIcon className="fill-[#16BDFF]" />
             </button>
             <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#16BDFF]">
               Personalized Dialogue Page

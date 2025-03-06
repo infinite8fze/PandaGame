@@ -78,7 +78,7 @@ export function NotificationsAlertsPage({
               onClick={onBack}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <ControlPanelIcon />
+              <ControlPanelIcon className="fill-[#FF9E2D]" />
             </button>
             <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#FF9E2D]">
               Notifications & Alerts

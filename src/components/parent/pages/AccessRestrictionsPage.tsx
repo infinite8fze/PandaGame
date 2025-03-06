@@ -247,7 +247,7 @@ export function AccessRestrictionsPage({
               onClick={onBack}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <ControlPanelIcon />
+              <ControlPanelIcon className="fill-[#229654]" />
             </button>
             <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#229654]">
               Access Restrictions

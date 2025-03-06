@@ -107,17 +107,17 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
 
       {/* Safe area content */}
       <SafeArea>
-        <div className="relative w-full h-full flex flex-col p-6">
+        <div className="relative w-full h-full flex flex-col">
           {/* Back button */}
-          <div className="flex items-center mt-0 mb-10 px-6">
+          <div className="flex items-center mt-0 mb-10">
             <button
               onClick={onClose}
               className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
             >
-              <ControlPanelIcon  />
+              <ControlPanelIcon className="fill-[#005694]"  />
             </button>
             <div className="text-center mb-8">
-              <h2 className="extra-sm:text-2xl md:text-4xl font-bold text-[#3E3E3E] drop-shadow-lg mt-8">
+              <h2 className="extra-sm:text-2xl md:text-4xl font-bold text-[#005694] drop-shadow-lg mt-8">
                 Parent Control Panel
               </h2>
             </div>

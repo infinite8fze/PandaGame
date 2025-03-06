@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { SafeArea } from "../../SafeArea";
+import { ControlPanelIcon } from "../../icons";
 
 interface LineChartProps {
   data: {
@@ -375,37 +376,29 @@ export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
 
       {/* Safe area content */}
       <SafeArea>
-        <div className="relative w-full h-full flex flex-col p-6">
+        <div className="relative w-full h-full flex flex-col">
           {/* Header with back button and title */}
           <div className="flex items-center mt-8 mb-10">
             <button
               onClick={onBack}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <img
-                src="/svg/control-panel-back.svg"
-                alt="Back"
-                className="w-full h-full object-contain"
-                style={{
-                  filter:
-                    "invert(45%) sepia(85%) saturate(1073%) hue-rotate(314deg) brightness(95%) contrast(96%)",
-                }}
-              />
+           <ControlPanelIcon className="fill-[#E16C78]" />
             </button>
-            <h2 className="text-3xl font-bold text-[#E16C78]">
+            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#E16C78]">
               Progress Center
             </h2>
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 scrollbar-custom">
+          <div className="flex-1 overflow-y-auto clickable scrollbar-custom">
             <div className="max-w-2xl mx-auto">
               {/* Child's Progress Chart */}
               <div className="mb-12">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-2">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-2">
                   1. Child's Progress Chart
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-6 extra-sm:text-sm md:text-lg">
                   Track your child's progress over time in each lesson to
                   monitor improvements and areas for growth.
                 </p>
@@ -452,10 +445,10 @@ export function ProgressCenterPage({ onBack }: ProgressCenterPageProps) {
 
               {/* Time Spent on Topics */}
               <div className="mb-12">
-                <h3 className="text-2xl font-bold text-[#1F2020] mb-2">
+                <h3 className="extra-sm:text-xl md:text-2xl font-bold text-[#1F2020] mb-2">
                   2. Time Spent on Topics
                 </h3>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 mb-6 extra-sm:text-sm md:text-lg">
                   A circular chart showing the percentage of time your child has
                   spent on different topics like Writing, Reading,
                   Pronunciation, Math, and Art.

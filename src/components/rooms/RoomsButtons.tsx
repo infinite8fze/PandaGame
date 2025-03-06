@@ -75,7 +75,6 @@ const RoomsButtons = ({
                 bgColor={"orangeGradient"}
                 borderColor={"borderOrangeGradient"}
                 icon={ParentIcon}
-                isActive={false}
                 onClick={() => setCurrentRoom("parent")}
               />
               <div className="w-full h-full absolute top-0 left-0 inset-0 z-20">

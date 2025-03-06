@@ -90,11 +90,12 @@ export function LearningLevelSettingsPage({
         <div className="relative w-full h-full flex flex-col p-6">
           {/* Header with back button and title */}
           <div className="flex items-center mt-8 mb-10">
-            <button
+          <button
               onClick={onBack}
-              className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
+              className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 
+              transition-transform hover:scale-110 text-[#6A6AF1]"
             >
-              <ControlPanelIcon />
+           <ControlPanelIcon className="fill-[#6A6AF1]" />
             </button>
             <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#6A6AF1]">
               Learning Level Settings
@@ -102,7 +103,7 @@ export function LearningLevelSettingsPage({
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-4 scrollbar-custom">
+          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
             <div className="max-w-2xl mx-auto">
               {/* Description */}
               <p className="text-[#1F2020] extra-sm:text-sm md:text-lg mb-10">
