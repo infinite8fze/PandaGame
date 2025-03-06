@@ -202,7 +202,6 @@ const RoomsButtons = ({
                   icon={room.icon}
                   key={room.id}
                   bgColor={"greenGradient"}
-                  isActive={currentRoom === room.id}
                   onClick={() => setCurrentRoom(room.id)}
                 />
               ))}

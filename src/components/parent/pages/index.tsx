@@ -15,7 +15,7 @@ const ControlPanelPage = ({
 }) => {
   console.log("🚀 ~ bgColor:", bgColor);
   // Render specific page based on selection
-  const renderPage = (page) => {
+  const renderPage = (page: string) => {
     switch (page) {
       case "dialog":
         return <PersonalizedDialoguePage />;
@@ -43,12 +43,12 @@ const ControlPanelPage = ({
 
       {/* Safe area content */}
       <SafeArea>
-        <div className="relative w-full h-full flex flex-col p-6">
+        <div className="relative w-full h-full flex flex-col ">
           {/* Header with back button and title */}
           <div className="flex items-center mt-8 mb-10">
             <button
               onClick={() => setCurrentPage(null)}
-              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
+              className="clickable w-12 h-12 mx-4 transition-transform hover:scale-110"
             >
               <ControlPanelIcon className={`fill-current ${titleColor}`} />
             </button>
@@ -60,7 +60,7 @@ const ControlPanelPage = ({
           </div>
 
           {/* Content */}
-          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
+          <div className="flex-1 overflow-y-auto clickable scrollbar-custom">
             {renderPage(currentPage)}
           </div>
         </div>
