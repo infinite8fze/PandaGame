@@ -20,6 +20,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#003A51",
       icon: "/images/parent/contol-panel-icons/dialog.png",
       bgColor: "radial-gradient(circle at 15% 50%, #B7EBFF, #16BDFF)",
+      PageTitleColor:"#16BDFF",
+      PageBgColor:"#16BDFF"
     },
     {
       id: "learning",
@@ -27,6 +29,9 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#1E1E7F",
       icon: "/images/parent/contol-panel-icons/learning.png",
       bgColor: "radial-gradient(circle at 15% 50%, #D0D0FF, #8C8CF8)",
+      PageTitleColor:"#1E1E7F",
+      PageBgColor:"#1E1E7F"
+      
     },
     {
       id: "access",
@@ -34,6 +39,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#E04E2D",
       icon: "/images/parent/contol-panel-icons/access.png",
       bgColor: "radial-gradient(circle at 15% 50%, #FFF2C7, #FFDD6B)",
+      PageTitleColor:"",
+      PageBgColor:""
     },
     {
       id: "notification",
@@ -41,6 +48,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#50320A",
       icon: "/images/parent/contol-panel-icons/notification.png",
       bgColor: "radial-gradient(circle at 15% 50%, #FFE676, #FE9818)",
+      PageTitleColor:"#FF9E2D",
+      PageBgColor:"#FF9E2D"
     },
     {
       id: "progress-center",
@@ -48,6 +57,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#1E6957",
       icon: "/images/parent/contol-panel-icons/progress-center.png",
       bgColor: "radial-gradient(circle at 15% 50%, #E0FF98, #A9DC35)",
+      PageTitleColor:"#E16C78",
+      PageBgColor:"#E16C78"
     },
   ];
   // favorite date for control panel item
@@ -119,8 +130,9 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
                       onClick={() => {
                         setCurrentPage(item.id);
                         setPageTitle(item.title);
-                        setPageTitleColor(item.titleColor);
-                        setPageBgColor(item.bgColor);
+                        setPageTitleColor(item.PageTitleColor);
+                        setPageBgColor(item.PageBgColor);
+                  
                       }}
                     />
                   ))}

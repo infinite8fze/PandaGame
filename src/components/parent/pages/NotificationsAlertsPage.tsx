@@ -56,33 +56,6 @@ export function NotificationsAlertsPage() {
   const [extraTimeEnabled, setExtraTimeEnabled] = useState(false);
 
   return (
-    <div className="fixed inset-0 z-50">
-      {/* Full screen background with linear gradient */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: "linear-gradient(to bottom, #fff6e8, white)",
-        }}
-      />
-
-      {/* Safe area content */}
-      <SafeArea>
-        <div className="relative w-full h-full flex flex-col p-6">
-          {/* Header with back button and title */}
-          <div className="flex items-center mt-8 mb-10">
-            <button
-              onClick={onBack}
-              className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
-            >
-              <ControlPanelIcon className="fill-[#FF9E2D]" />
-            </button>
-            <h2 className="extra-sm:text-xl md:text-3xl font-bold text-[#FF9E2D]">
-              Notifications & Alerts
-            </h2>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 overflow-y-auto px-6 clickable scrollbar-custom">
             <div className="max-w-2xl mx-auto">
               {/* Description */}
 
@@ -187,9 +160,5 @@ export function NotificationsAlertsPage() {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </SafeArea>
-    </div>
   );
 }
