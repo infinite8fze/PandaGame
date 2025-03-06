@@ -43,17 +43,13 @@ const Rooms = () => {
     /* HANDLE ROOM CHANGING FOR PANDA ANIMATION */
   }
 
-  // const handleMicMouseDown = () => {
-  //   startRecording();
-  // };
+  const handleMicMouseDown = () => {
+    startRecording();
+  };
 
-  // const handleMicMouseUp = () => {
-  //   stopRecording();
-  // };
-
-  // const handleLevelClick = () => {
-  //   setCurrentLevel((prev) => (prev % 10) + 1);
-  // };
+  const handleMicMouseUp = () => {
+    stopRecording();
+  };
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Scene with background and character */}
@@ -69,6 +65,11 @@ const Rooms = () => {
           setCurrentRoom={setCurrentRoom}
           showControlPanel={showControlPanel}
           setShowControlPanel={setShowControlPanel}
+          handleMicMouseDown={handleMicMouseDown}
+          handleMicMouseUp={handleMicMouseUp}
+          isSupported={isSupported}
+          isLoading={isLoading}
+          isRecording={isRecording}
         />
       </SafeArea>
       {/* Parent Control Panel */}

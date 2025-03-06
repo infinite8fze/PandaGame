@@ -19,12 +19,22 @@ interface RoomButtonsProps {
   setCurrentRoom: Dispatch<SetStateAction<string>>;
   showControlPanel?: boolean;
   setShowControlPanel: Dispatch<SetStateAction<boolean>>;
+  handleMicMouseDown: () => void;
+  handleMicMouseUp: () => void;
+  isSupported: boolean;
+  isLoading: boolean;
+  isRecording: boolean;
 }
 const RoomsButtons = ({
   currentRoom,
   setCurrentRoom,
   showControlPanel,
   setShowControlPanel,
+  handleMicMouseDown,
+  handleMicMouseUp,
+  isSupported,
+  isLoading,
+  isRecording,
 }: RoomButtonsProps) => {
   const rooms = [
     { id: "gameroom", name: "Playroom", icon: GameRoomIcon },
@@ -33,25 +43,8 @@ const RoomsButtons = ({
     { id: "school", name: "School", icon: SchoolIcon },
     { id: "bedroom", name: "Bedroom", icon: BedroomIcon },
   ];
-  const {
-    isRecording,
-    isLoading,
-    isSpeaking,
-    startRecording,
-    stopRecording,
-    lastMessage,
-    isSupported,
-  } = useAudio(currentRoom);
   const [currentLevel, setCurrentLevel] = useState(1);
   const [coins, setCoins] = useState(150);
-
-  const handleMicMouseDown = () => {
-    startRecording();
-  };
-
-  const handleMicMouseUp = () => {
-    stopRecording();
-  };
 
   const handleLevelClick = () => {
     setCurrentLevel((prev) => (prev % 10) + 1);
@@ -142,7 +135,7 @@ const RoomsButtons = ({
                     : "Speech recognition not supported"
                 }
                 disabled={!isSupported}
-                className="relative flex items-center justify-center w-24 h-24 relative p-4 rounded-full bg-gradient-to-b from-yellow-400 to-orange-500 shadow-lg hover:scale-105 transition-transform"
+                className="clickable flex items-center justify-center w-24 h-24 relative p-4 rounded-full bg-gradient-to-b from-yellow-400 to-orange-500 shadow-lg hover:scale-105 transition-transform"
               >
                 <div className="absolute inset-1 rounded-full border-2 border-orange-500"></div>
                 <div className="absolute inset-0 rounded-full border-4 border-white"></div>
@@ -209,7 +202,6 @@ const RoomsButtons = ({
                   icon={room.icon}
                   key={room.id}
                   bgColor={"greenGradient"}
-                  isActive={currentRoom === room.id}
                   onClick={() => setCurrentRoom(room.id)}
                 />
               ))}

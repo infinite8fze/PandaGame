@@ -102,7 +102,7 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
           <SafeArea>
             <div className="relative w-full h-full flex flex-col">
               {/* Back button */}
-              <div className="flex items-center mt-0 mb-10">
+              <div className="flex items-center mt-0 mb-10 mx-auto">
                 <button
                   onClick={onClose}
                   className="clickable extra-sm:w-8 extra-sm:h-8 md:w-12 md:h-12 mr-4 transition-transform hover:scale-110"
