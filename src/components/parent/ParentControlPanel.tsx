@@ -20,8 +20,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#003A51",
       icon: "/images/parent/contol-panel-icons/dialog.png",
       bgColor: "radial-gradient(circle at 15% 50%, #B7EBFF, #16BDFF)",
-      PageTitleColor:"#16BDFF",
-      PageBgColor:"#16BDFF"
+      PageTitleColor: "text-[#16BDFF]",
+      PageBgColor: "linear-gradient(to bottom, #E8FBFF, white)",
     },
     {
       id: "learning",
@@ -29,9 +29,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#1E1E7F",
       icon: "/images/parent/contol-panel-icons/learning.png",
       bgColor: "radial-gradient(circle at 15% 50%, #D0D0FF, #8C8CF8)",
-      PageTitleColor:"#1E1E7F",
-      PageBgColor:"#1E1E7F"
-      
+      PageTitleColor: "text-[#1E1E7F]",
+      PageBgColor: "linear-gradient(to bottom, #F1F1FF, white)",
     },
     {
       id: "access",
@@ -39,8 +38,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#E04E2D",
       icon: "/images/parent/contol-panel-icons/access.png",
       bgColor: "radial-gradient(circle at 15% 50%, #FFF2C7, #FFDD6B)",
-      PageTitleColor:"",
-      PageBgColor:""
+      PageTitleColor: "text-[#229654]",
+      PageBgColor: "linear-gradient(to bottom, #E8FFF0, white)",
     },
     {
       id: "notification",
@@ -48,8 +47,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#50320A",
       icon: "/images/parent/contol-panel-icons/notification.png",
       bgColor: "radial-gradient(circle at 15% 50%, #FFE676, #FE9818)",
-      PageTitleColor:"#FF9E2D",
-      PageBgColor:"#FF9E2D"
+      PageTitleColor: "text-[#FF9E2D]",
+      PageBgColor: "linear-gradient(to bottom, #FFF6E8, white)",
     },
     {
       id: "progress-center",
@@ -57,8 +56,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
       titleColor: "#1E6957",
       icon: "/images/parent/contol-panel-icons/progress-center.png",
       bgColor: "radial-gradient(circle at 15% 50%, #E0FF98, #A9DC35)",
-      PageTitleColor:"#E16C78",
-      PageBgColor:"#E16C78"
+      PageTitleColor: "text-[#E16C78]",
+      PageBgColor: "linear-gradient(to bottom, #FFEAED, white)",
     },
   ];
   // favorite date for control panel item
@@ -77,8 +76,8 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
           currentPage={currentPage}
           setCurrentPage={setCurrentPage}
           title={pageTitle}
-          bgColor={pageTitleColor}
-          titleColor={pageBgColor}
+          bgColor={pageBgColor}
+          titleColor={pageTitleColor}
         />
       ) : (
         <div className="fixed inset-0 z-50">
@@ -128,11 +127,10 @@ export function ParentControlPanel({ onClose }: ParentControlPanelProps) {
                       titleColor={item.titleColor}
                       bgColor={item.bgColor}
                       onClick={() => {
-                        setCurrentPage(item.id);
                         setPageTitle(item.title);
                         setPageTitleColor(item.PageTitleColor);
                         setPageBgColor(item.PageBgColor);
-                  
+                        setCurrentPage(item.id);
                       }}
                     />
                   ))}

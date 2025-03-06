@@ -13,6 +13,7 @@ const ControlPanelPage = ({
   bgColor,
   titleColor,
 }) => {
+  console.log("🚀 ~ bgColor:", bgColor);
   // Render specific page based on selection
   const renderPage = (page) => {
     switch (page) {
@@ -36,7 +37,7 @@ const ControlPanelPage = ({
       <div
         className="absolute inset-0"
         style={{
-          background: `linear-gradient(to bottom, ${bgColor}, white)`,
+          background: bgColor,
         }}
       />
 
@@ -49,10 +50,10 @@ const ControlPanelPage = ({
               onClick={() => setCurrentPage(null)}
               className="clickable w-12 h-12 mr-4 transition-transform hover:scale-110"
             >
-              <ControlPanelIcon className={`fill-[${titleColor}]`} />
+              <ControlPanelIcon className={`fill-current ${titleColor}`} />
             </button>
             <h2
-              className={`extra-sm:text-xl md:text-3xl font-bold text-[${titleColor}]`}
+              className={`extra-sm:text-xl md:text-3xl font-bold ${titleColor}`}
             >
               {title}
             </h2>
