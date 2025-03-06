@@ -103,13 +103,13 @@ const RoomsButtons = ({
               >
                 Customization
               </button>
-              <button
+              {/* <button
                 className="clickable absolute top-44 left-1/2 -translate-x-1/2 w-64 h-20
                 transition-transform hover:scale-105 px-6 py-2 text-2xl border-4 border-progressCenter-icon rounded-full font-bold text-progressCenter-icon bg-gradient-to-b from-white to-purple-200
                 border-progressCenter-icon rounded-full shadow-md hover:bg-purple-100 transition-all"
               >
                 Progress Center
-              </button>
+              </button> */}
               {/* Progress Center Button */}
             </>
           )}
