@@ -3,14 +3,10 @@ import { Scene } from "../Scene";
 import { useAudio } from "../../hooks/useAudio";
 import { ParentControlPanel } from "../parent/ParentControlPanel";
 import RoomsButtons from "./RoomsButtons";
-import { Bathroom } from "./Bathroom";
-import { Bedroom } from "./Bedroom";
-import { Kitchen } from "./Kitchen";
-import { School } from "./School";
-import { Playroom } from "./Playroom";
-import { ParentRoom } from "./ParentRoom";
 import RoomSwitch from "./RoomSwitch";
 import { SafeArea } from "../SafeArea";
+import { MinigameModal } from "../minigames/MinigameModal";
+import { GameFrame } from "../minigames/GameFrame";
 
 const Rooms = () => {
   const [currentRoom, setCurrentRoom] = useState("gameroom");
@@ -24,6 +20,14 @@ const Rooms = () => {
     isSupported,
   } = useAudio(currentRoom);
   const [showControlPanel, setShowControlPanel] = useState(false);
+  const [isMinigameModalOpen, setIsMinigameModalOpen] = useState(false);
+  const [currentGameUrl, setCurrentGameUrl] = useState<string | null>(null);
+
+  const handleGameSelect = (url: string) => {
+    setCurrentGameUrl(url);
+    setIsMinigameModalOpen(false);
+  };
+
   {
     /* HANDLE ROOM CHANGING FOR PANDA ANIMATION */
   }
@@ -53,7 +57,10 @@ const Rooms = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
       {/* Scene with background and character */}
-      <RoomSwitch currentRoom={currentRoom} />
+      <RoomSwitch
+        currentRoom={currentRoom}
+        setIsMinigameModalOpen={setIsMinigameModalOpen}
+      />
       {/* <div className="absolute inset-0"> */}
       <Scene />
       {/* </div> */}
@@ -70,8 +77,21 @@ const Rooms = () => {
           isSupported={isSupported}
           isLoading={isLoading}
           isRecording={isRecording}
+          isMinigameModalOpen={isMinigameModalOpen}
         />
       </SafeArea>
+      <MinigameModal
+        isOpen={isMinigameModalOpen}
+        onClose={() => setIsMinigameModalOpen(false)}
+        onSelectGame={handleGameSelect}
+        currentRoom={currentRoom}
+      />
+      {currentGameUrl && (
+        <GameFrame
+          url={currentGameUrl}
+          onClose={() => setCurrentGameUrl(null)}
+        />
+      )}
       {/* Parent Control Panel */}
       {showControlPanel && (
         <ParentControlPanel onClose={() => setShowControlPanel(false)} />

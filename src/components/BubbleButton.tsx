@@ -10,9 +10,6 @@ interface SvgIconProps {
   onClick: () => Void;
 }
 const BubbleButton = ({
-  width = 100,
-  height = 100,
-  className = "",
   icon: Icon,
   onClick,
   bgColor,

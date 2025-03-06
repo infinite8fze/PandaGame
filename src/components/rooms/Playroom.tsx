@@ -8,19 +8,14 @@ import { GameFrame } from "../minigames/GameFrame";
 interface PlayroomProps {
   children?: React.ReactNode;
   character?: React.ReactNode;
+  setIsMinigameModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function Playroom({ children, character }: PlayroomProps) {
-  const [isMinigameModalOpen, setIsMinigameModalOpen] = useState(false);
-  const [currentGameUrl, setCurrentGameUrl] = useState<string | null>(null);
-
-  const handleGameSelect = (url: string) => {
-    setCurrentGameUrl(url);
-    setIsMinigameModalOpen(false);
-  };
-  useEffect(() => {
-    console.log("🚀 ~ Playroom ~ isMinigameModalOpen:", isMinigameModalOpen);
-  }, [isMinigameModalOpen]);
+export function Playroom({
+  children,
+  character,
+  setIsMinigameModalOpen,
+}: PlayroomProps) {
   const roomObjects = (
     <>
       {/* Left side - Game chair and minigame button */}
@@ -55,17 +50,6 @@ export function Playroom({ children, character }: PlayroomProps) {
       roomObjects={roomObjects}
       character={character}
     >
-      <MinigameModal
-        isOpen={isMinigameModalOpen}
-        onClose={() => setIsMinigameModalOpen(false)}
-        onSelectGame={handleGameSelect}
-      />
-      {currentGameUrl && (
-        <GameFrame
-          url={currentGameUrl}
-          onClose={() => setCurrentGameUrl(null)}
-        />
-      )}
       {children}
     </Layout>
   );

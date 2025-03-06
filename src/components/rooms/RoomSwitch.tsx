@@ -7,10 +7,13 @@ import { Playroom } from "./Playroom";
 import { School } from "./School";
 interface RoomSwitchProps {
   currentRoom?: string;
+  setIsMinigameModalOpen: Dispatch<SetStateAction<boolean>>;
 }
-const RoomSwitch = ({ currentRoom }: RoomSwitchProps) => {
+const RoomSwitch = ({
+  currentRoom,
+  setIsMinigameModalOpen,
+}: RoomSwitchProps) => {
   const renderRoom = () => {
-
     switch (currentRoom) {
       case "bathroom":
         return <Bathroom />;
@@ -19,9 +22,9 @@ const RoomSwitch = ({ currentRoom }: RoomSwitchProps) => {
       case "kitchen":
         return <Kitchen />;
       case "school":
-        return <School />;
+        return <School setIsMinigameModalOpen={setIsMinigameModalOpen} />;
       case "gameroom":
-        return <Playroom />;
+        return <Playroom setIsMinigameModalOpen={setIsMinigameModalOpen} />;
       case "parent":
         return <ParentRoom />;
       default:

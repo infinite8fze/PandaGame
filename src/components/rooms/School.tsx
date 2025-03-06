@@ -8,17 +8,14 @@ import { GameFrame } from "../minigames/GameFrame";
 interface SchoolProps {
   children?: React.ReactNode;
   character?: React.ReactNode;
+  setIsMinigameModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 
-export function School({ children, character }: SchoolProps) {
-  const [isMinigameModalOpen, setIsMinigameModalOpen] = useState(false);
-  const [currentGameUrl, setCurrentGameUrl] = useState<string | null>(null);
-
-  const handleGameSelect = (url: string) => {
-    setCurrentGameUrl(url);
-    setIsMinigameModalOpen(false);
-  };
-
+export function School({
+  children,
+  character,
+  setIsMinigameModalOpen,
+}: SchoolProps) {
   const roomObjects = (
     <>
       {/* Pencil on the left */}
@@ -54,18 +51,6 @@ export function School({ children, character }: SchoolProps) {
       roomObjects={roomObjects}
       room="school"
     >
-      {/* Modals */}
-      <MinigameModal
-        isOpen={isMinigameModalOpen}
-        onClose={() => setIsMinigameModalOpen(false)}
-        onSelectGame={handleGameSelect}
-      />
-      {currentGameUrl && (
-        <GameFrame
-          url={currentGameUrl}
-          onClose={() => setCurrentGameUrl(null)}
-        />
-      )}
       {children}
     </Layout>
   );
