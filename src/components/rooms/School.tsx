@@ -19,22 +19,22 @@ export function School({
   const roomObjects = (
     <>
       {/* Pencil on the left */}
-      <div className="relative left-0 top-[60%] -translate-y-1/2 clickable">
+      <div className="relative left-[-8%] extra-sm:top-[57%] md:top-[60%] -translate-y-1/2 clickable">
         <MinigameButton
           onClick={() => setIsMinigameModalOpen(true)}
           imageUrl="/images/rooms/school/pencil.png"
-          width="w-[30%]"
+          width="extra-sm:w-[40%] md:w-[30%]"
           height="h-auto"
           animate={false}
         />
       </div>
 
       {/* Calculator on the right */}
-      <div className="relative right-[26%] top-[43%] translate-y-[-100%] translate-x-[100%]">
+      <div className="relative extra-sm:right-[32%] md:right-[26%] extra-sm:top-[38%] md:top-[43%] translate-y-[-100%] translate-x-[100%]">
         <MinigameButton
           onClick={() => setIsMinigameModalOpen(true)}
           imageUrl="/images/rooms/school/calc.png"
-          width="w-[40%]"
+          width="extra-sm:w-[50%] md:w-[40%]"
           height="h-auto"
           animate={false}
         />

@@ -19,8 +19,8 @@ export function Playroom({
   const roomObjects = (
     <>
       {/* Left side - Game chair and minigame button */}
-      <div className="relative left-4 top-[80%] translate-y-[-100%] flex flex-col items-start">
-        <div className="ml-4 w-[20%]">
+      <div className="relative left-4 top-[82%] translate-y-[-100%] flex flex-col items-start">
+        <div className="extra-sm:ml-2 md:ml-4 w-[20%] ">
           <MinigameButton onClick={() => setIsMinigameModalOpen(true)} />
         </div>
         <img
