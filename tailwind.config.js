@@ -44,6 +44,7 @@ export default {
     screens: {
       "extra-sm": "279px",
       md: "768px",
+      lg: "1024px",
     },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],

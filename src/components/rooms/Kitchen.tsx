@@ -11,18 +11,10 @@ interface KitchenProps {
 }
 
 export function Kitchen({ children, character }: KitchenProps) {
-  const [isMinigameModalOpen, setIsMinigameModalOpen] = useState(false);
-  const [currentGameUrl, setCurrentGameUrl] = useState<string | null>(null);
-
-  const handleGameSelect = (url: string) => {
-    setCurrentGameUrl(url);
-    setIsMinigameModalOpen(false);
-  };
-
   const outsideObjects = (
     <>
       {/* Stove on the left */}
-      <div className="absolute left-1/3 top-2/3 translate-y-[-100%] translate-x-[-20%]">
+      <div className="absolute extra-sm:left-0 md:left-[25%] lg:left-[40%] top-[74%] translate-y-[-100%] translate-x-[-50%]">
         <img
           src="/images/rooms/kitchen/stove.png"
           alt="Stove"
@@ -31,7 +23,7 @@ export function Kitchen({ children, character }: KitchenProps) {
       </div>
 
       {/* Refrigerator on the right */}
-      <div className="absolute right-1/3 top-2/3 translate-y-[-100%] translate-x-1/2">
+      <div className="absolute extra-sm:right-0 md:right-[20%] lg:right-[40%] top-[75%] translate-y-[-100%] translate-x-1/2">
         <img
           src="/images/rooms/kitchen/refrigerator.png"
           alt="Refrigerator"
@@ -50,17 +42,6 @@ export function Kitchen({ children, character }: KitchenProps) {
       outsideObjects={outsideObjects}
       room="kitchen"
     >
-      <MinigameModal
-        isOpen={isMinigameModalOpen}
-        onClose={() => setIsMinigameModalOpen(false)}
-        onSelectGame={handleGameSelect}
-      />
-      {currentGameUrl && (
-        <GameFrame
-          url={currentGameUrl}
-          onClose={() => setCurrentGameUrl(null)}
-        />
-      )}
       {children}
     </Layout>
   );

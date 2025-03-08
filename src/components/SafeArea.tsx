@@ -33,8 +33,6 @@ export function SafeArea({ children }: SafeAreaProps) {
           maxWidth: "calc(100vh * 9/16)",
           left: "50%",
           top: "50%",
-          "--scale":
-            "min(1, min(100vw / (100vh * 9/16), 100vh / (100vw * 16/9)))",
           transform: "translate(-50%, -50%)",
         } as React.CSSProperties
       }

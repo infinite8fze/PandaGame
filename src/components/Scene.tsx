@@ -1,20 +1,8 @@
-import { Suspense, useState, useEffect, useRef } from "react";
+import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Panda } from "./Panda";
-import { Professor } from "./Professor";
-import { Loader2 } from "lucide-react";
-import { Layout } from "./Layout";
-import { Bathroom } from "./rooms/Bathroom";
-import { Bedroom } from "./rooms/Bedroom";
-import { Kitchen } from "./rooms/Kitchen";
-import { School } from "./rooms/School";
-import { Playroom } from "./rooms/Playroom";
-import { ParentRoom } from "./rooms/ParentRoom";
 
-interface SceneProps {
-  children?: React.ReactNode;
-}
 
 export function Scene() {
   const [isLoading, setIsLoading] = useState(true);
