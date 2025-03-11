@@ -26,9 +26,10 @@ export function RoomBackground({ room, translateY }: RoomBackgroundProps) {
       <div
         className={className}
         style={{
+          
           backgroundImage: `url(/images/rooms/${room}/floor.png)`,
           backgroundSize: "cover",
-          backgroundPosition: "center top",
+          backgroundPosition: "center bottom",
           backgroundRepeat: "no-repeat",
           zIndex: 2,
         }}
