@@ -1,16 +1,10 @@
 import { Suspense, useState } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { Panda } from "./Panda";
+import { Character3D } from "./Panda";
 
-
-export function Scene() {
+export function Scene({ currentRoom = "school", isRecording, isSpeaking }) {
   const [isLoading, setIsLoading] = useState(true);
-
-  // const renderCharacter = () => {
-  // if (currentRoom === 'parent') {
-  //   return <Professor onLoad={() => setIsLoading(false)} />;
-  // }
 
   return (
     <div className="absolute inset-0 h-full translate-y-28 z-10">
@@ -42,11 +36,14 @@ export function Scene() {
         <directionalLight position={[0, 0, -1]} intensity={0.1} />
 
         <Suspense fallback={null}>
-          <Panda
+          {/* <Panda animation="Idle" /> */}
+          <Character3D
+            isListening={isRecording}
+            isTalking={isSpeaking}
             position={[0, -0.45, 0]}
             scale={0.25}
-            isChangingRoom={false}
-            onLoad={() => setIsLoading(false)}
+            // talkDuration={5000} // 5 seconds of talking
+            // onAnimationComplete={() => setIsTalking(false)}
           />
         </Suspense>
 

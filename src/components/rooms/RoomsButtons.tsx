@@ -14,6 +14,7 @@ import {
   SchoolIcon,
   KingIcon,
 } from "../icons";
+import { useNavigate } from "react-router-dom";
 interface RoomButtonsProps {
   currentRoom?: string;
   setCurrentRoom: Dispatch<SetStateAction<string>>;
@@ -47,6 +48,7 @@ const RoomsButtons = ({
   ];
   const [currentLevel, setCurrentLevel] = useState(1);
   const [coins, setCoins] = useState(150);
+  const navigate = useNavigate();
 
   const handleLevelClick = () => {
     setCurrentLevel((prev) => (prev % 10) + 1);
@@ -185,7 +187,10 @@ const RoomsButtons = ({
           )}
           {/* Free Trial Button - Only in parent room */}
           {currentRoom === "parent" && (
-            <button className="absolute bottom-5 left-1/2 -translate-x-1/2 w-64 h-32 transition-transform hover:scale-105">
+            <button
+              onClick={() => navigate("/subscribe")}
+              className="clickable absolute bottom-5 left-1/2 -translate-x-1/2 w-64 h-32 transition-transform hover:scale-105"
+            >
               <div
                 className="absolute inset-0 bg-contain bg-center bg-no-repeat"
                 style={{ backgroundImage: "url(/images/Free-trial.png)" }}

@@ -1,4 +1,4 @@
-import { useState, useCallback, useRef, useEffect } from 'react';
+import { useState, useCallback, useRef, useEffect } from "react";
 
 // Define the SpeechRecognition type
 interface Window {
@@ -39,37 +39,40 @@ const defaultResponses = {
     "Magic is everywhere around us!",
     "Let's create some magical moments together!",
     "What magical adventure shall we go on next?",
-  ]
+  ],
 };
 
 // Check if speech recognition is supported
 const isSpeechRecognitionSupported = () => {
-  return 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+  return "webkitSpeechRecognition" in window || "SpeechRecognition" in window;
 };
 
 // Check if speech synthesis is supported
 const isSpeechSynthesisSupported = () => {
-  return 'speechSynthesis' in window;
+  return "speechSynthesis" in window;
 };
 
 // Add natural pauses to text
 const addNaturalPauses = (text: string): string => {
   return text
-    .replace(/\./g, '... ')
-    .replace(/\!/g, '!... ')
-    .replace(/\?/g, '?... ')
-    .replace(/,/g, ', ')
+    .replace(/\./g, "... ")
+    .replace(/\!/g, "!... ")
+    .replace(/\?/g, "?... ")
+    .replace(/,/g, ", ")
     .trim();
 };
 
-export function useAudio(currentRoom: string = 'school') {
+export function useAudio(currentRoom: string = "school") {
   const [isRecording, setIsRecording] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [lastMessage, setLastMessage] = useState<string>('');
+  const [lastMessage, setLastMessage] = useState<string>("");
   const [isSpeaking, setIsSpeaking] = useState(false);
   const recognition = useRef<any>(null);
-  const [isSupported, setIsSupported] = useState(isSpeechRecognitionSupported());
-  const [selectedVoice, setSelectedVoice] = useState<SpeechSynthesisVoice | null>(null);
+  const [isSupported, setIsSupported] = useState(
+    isSpeechRecognitionSupported()
+  );
+  const [selectedVoice, setSelectedVoice] =
+    useState<SpeechSynthesisVoice | null>(null);
   const currentUtterance = useRef<SpeechSynthesisUtterance | null>(null);
   const messageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const speechQueue = useRef<string[]>([]);
@@ -81,13 +84,16 @@ export function useAudio(currentRoom: string = 'school') {
       if (!isSpeechSynthesisSupported()) return;
 
       const voices = window.speechSynthesis.getVoices();
-      const bestVoice = voices.find(voice => 
-        voice.name.includes('Zira') && voice.lang.startsWith('en')
-      ) || voices.find(voice => 
-        voice.lang.startsWith('en') && voice.name.includes('Female')
-      ) || voices.find(voice => 
-        voice.lang.startsWith('en')
-      ) || voices[0];
+      const bestVoice =
+        voices.find(
+          (voice) => voice.name.includes("Zira") && voice.lang.startsWith("en")
+        ) ||
+        voices.find(
+          (voice) =>
+            voice.lang.startsWith("en") && voice.name.includes("Female")
+        ) ||
+        voices.find((voice) => voice.lang.startsWith("en")) ||
+        voices[0];
 
       setSelectedVoice(bestVoice || null);
     };
@@ -107,7 +113,7 @@ export function useAudio(currentRoom: string = 'school') {
       if (recognition.current) {
         recognition.current.abort();
       }
-      setLastMessage('');
+      setLastMessage("");
     };
   }, []);
 
@@ -135,7 +141,7 @@ export function useAudio(currentRoom: string = 'school') {
 
   const speakText = (text: string) => {
     if (!isSpeechSynthesisSupported()) {
-      console.warn('Speech synthesis not supported');
+      console.warn("Speech synthesis not supported");
       return;
     }
 
@@ -149,30 +155,33 @@ export function useAudio(currentRoom: string = 'school') {
       }
 
       const textToSpeak = speechQueue.current.shift()!;
-      
+
       try {
         const processedText = addNaturalPauses(textToSpeak);
         const utterance = new SpeechSynthesisUtterance(processedText);
         currentUtterance.current = utterance;
-        
+
         if (selectedVoice) {
           utterance.voice = selectedVoice;
         }
-        
+
         utterance.rate = 0.85;
         utterance.pitch = 1.1;
         utterance.volume = 0.95;
-        
+
         utterance.onboundary = (event) => {
-          if (event.name === 'word') {
+          if (event.name === "word") {
             utterance.pitch = 1.1 + (Math.random() * 0.1 - 0.05);
           }
         };
-        
+
         utterance.onerror = (event: SpeechSynthesisErrorEvent) => {
           // Only log errors if they're not from intentional interruption
-          if (!isStoppingIntentionally.current && event.error !== 'interrupted') {
-            console.error('Speech synthesis error:', event);
+          if (
+            !isStoppingIntentionally.current &&
+            event.error !== "interrupted"
+          ) {
+            console.error("Speech synthesis error:", event);
           }
           currentUtterance.current = null;
           setIsSpeaking(false);
@@ -185,15 +194,15 @@ export function useAudio(currentRoom: string = 'school') {
             clearTimeout(messageTimeoutRef.current);
           }
           messageTimeoutRef.current = setTimeout(() => {
-            setLastMessage('');
+            setLastMessage("");
           }, 1000);
-          
+
           processNextInQueue();
         };
 
         window.speechSynthesis.speak(utterance);
       } catch (error) {
-        console.error('Speech synthesis error:', error);
+        console.error("Speech synthesis error:", error);
         currentUtterance.current = null;
         setIsSpeaking(false);
         processNextInQueue();
@@ -206,42 +215,47 @@ export function useAudio(currentRoom: string = 'school') {
   };
 
   const startRecording = useCallback(async () => {
+    console.log("start recording");
+    // setIsRecording(true);
     if (!isSupported) {
       return;
     }
 
     // Stop any ongoing speech when the user starts talking
     stopSpeaking();
-
     if (recognition.current) {
       recognition.current.abort();
       recognition.current = null;
     }
 
     try {
-      const SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+      const SpeechRecognition =
+        window.webkitSpeechRecognition || window.SpeechRecognition;
       recognition.current = new SpeechRecognition();
-      
-      recognition.current.lang = 'en-US';
+
+      recognition.current.lang = "en-US";
       recognition.current.continuous = false;
       recognition.current.interimResults = false;
 
       recognition.current.onresult = async (event: any) => {
         const transcript = event.results[0][0].transcript;
-        console.log('Recognized text:', transcript);
+        console.log("Recognized text:", transcript);
         setIsLoading(true);
 
         try {
-          const response = await fetch('https://panda.kidodo.games/api/v1/toki/response', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ question: transcript }),
-          });
+          const response = await fetch(
+            "https://panda.kidodo.games/api/v1/toki/response",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ question: transcript }),
+            }
+          );
 
           if (!response.ok) {
-            throw new Error('API request failed');
+            throw new Error("API request failed");
           }
 
           const jsonResponse = await response.json();
@@ -249,7 +263,7 @@ export function useAudio(currentRoom: string = 'school') {
           setLastMessage(responseText);
           speakText(responseText);
         } catch (apiError) {
-          console.error('API Error:', apiError);
+          console.error("API Error:", apiError);
           const defaultResponse = getRandomResponse(currentRoom);
           setLastMessage(defaultResponse);
           speakText(defaultResponse);
@@ -259,15 +273,16 @@ export function useAudio(currentRoom: string = 'school') {
       };
 
       recognition.current.onerror = (event: any) => {
-        console.error('Speech recognition error:', event.error);
-        const errorMessage = event.error === 'network'
-          ? 'Oops! I had a little trouble hearing you. Let\'s try again!'
-          : 'I didn\'t quite catch that. Can you say it again?';
-        
+        console.error("Speech recognition error:", event.error);
+        const errorMessage =
+          event.error === "network"
+            ? "Oops! I had a little trouble hearing you. Let's try again!"
+            : "I didn't quite catch that. Can you say it again?";
+
         setLastMessage(errorMessage);
-        setIsRecording(false);
+        // setIsRecording(false);
         recognition.current = null;
-        
+
         const defaultResponse = getRandomResponse(currentRoom);
         setTimeout(() => {
           setLastMessage(defaultResponse);
@@ -282,17 +297,16 @@ export function useAudio(currentRoom: string = 'school') {
 
       recognition.current.start();
       setIsRecording(true);
-
     } catch (error) {
-      console.error('Error starting recording:', error);
-      setLastMessage('I can\'t hear you right now. Let\'s try again!');
+      console.error("Error starting recording:", error);
+      setLastMessage("I can't hear you right now. Let's try again!");
       setIsRecording(false);
       recognition.current = null;
     }
   }, [currentRoom, isSupported, selectedVoice]);
-
   const stopRecording = useCallback(() => {
     if (recognition.current) {
+
       recognition.current.stop();
       recognition.current = null;
       setIsRecording(false);
@@ -306,6 +320,6 @@ export function useAudio(currentRoom: string = 'school') {
     startRecording,
     stopRecording,
     lastMessage,
-    isSupported
+    isSupported,
   };
 }

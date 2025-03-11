@@ -62,7 +62,11 @@ const Rooms = () => {
         setIsMinigameModalOpen={setIsMinigameModalOpen}
       />
       {/* <div className="absolute inset-0"> */}
-      <Scene />
+      <Scene
+        currentRoom={currentRoom}
+        isRecording={isRecording}
+        isSpeaking={isSpeaking}
+      />
       {/* </div> */}
 
       {/* Interactive UI elements in 9:16 safe area */}
