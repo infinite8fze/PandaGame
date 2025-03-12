@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { items } from './data';
 import { ShoppingItem } from './ShoppingItem';
 
-export function ShopPage() {
+export function ShoppingPage() {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState('');
   const totalPages = 3;
