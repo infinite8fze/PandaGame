@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { items } from './data';
-import { ShoppingItem } from './ShoppingItem';
+import { ShoppingItem } from '../rooms/ShoppingItem';
 
 export function ShoppingPage() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -30,18 +30,18 @@ export function ShoppingPage() {
 
   return (
     <div className="min-h-screen relative bg-cover bg-center bg-no-repeat"
-         style={{ backgroundImage: 'url("/src/Images/BG2.png")' }}>
+         style={{ backgroundImage: 'url("/images/BG2.png")' }}>
       {/* Background Images */}
       <div className="absolute inset-x-0 top-[20%] w-full">
         <img 
-          src="/src/Images/1.png" 
+          src="/images/1.png" 
           alt="Shelf 1"
           className="w-full h-auto object-cover"
         />
       </div>
       <div className="absolute inset-x-0 top-[55%] w-full">
         <img 
-          src="/src/Images/2.png" 
+          src="/images/2.png" 
           alt="Shelf 2"
           className="w-full h-auto object-cover"
         />
@@ -50,7 +50,7 @@ export function ShoppingPage() {
       {/* Behind Image at the bottom */}
       <div className="absolute inset-x-0 bottom-0 w-full flex justify-center">
         <img 
-          src="/src/Images/behind.png" 
+          src="/images/behind.png" 
           alt="Behind decoration"
           className="w-[20%] h-auto object-contain"
         />
