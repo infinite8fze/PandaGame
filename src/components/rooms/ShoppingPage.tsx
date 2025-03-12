@@ -78,7 +78,7 @@ export function ShoppingPage() {
                 className="absolute -left-14 z-10 hover:scale-110 transition-transform"
               >
                 <img 
-                  src="/src/Images/arrow.png"
+                  src="/images/arrow.png"
                   alt="Previous"
                   className="w-8 h-8 object-contain"
                 />
@@ -117,7 +117,7 @@ export function ShoppingPage() {
                 className="absolute -right-14 z-10 hover:scale-110 transition-transform"
               >
                 <img 
-                  src="/src/Images/arrow-1.png"
+                  src="/images/arrow-1.png"
                   alt="Next"
                   className="w-8 h-8 object-contain"
                 />
