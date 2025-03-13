@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch } from "react";
+import { SetStateAction } from "react";
 import { RoomBackground } from "./RoomBackground";
 import { Layout } from "../Layout";
 import { MinigameButton } from "../minigames/MinigameButton";
@@ -8,9 +9,9 @@ import { GameFrame } from "../minigames/GameFrame";
 interface KitchenProps {
   children?: React.ReactNode;
   character?: React.ReactNode;
+ setIsShopModalOpen: Dispatch<SetStateAction<boolean>>;
 }
-
-export function Kitchen({ children, character }: KitchenProps) {
+export function Kitchen({ children, character, setIsShopModalOpen }: KitchenProps) {
   const outsideObjects = (
     <>
       {/* Stove on the left */}
@@ -23,12 +24,15 @@ export function Kitchen({ children, character }: KitchenProps) {
       </div>
 
       {/* Refrigerator on the right */}
+   
       <div className="absolute extra-sm:right-0 md:right-[20%] lg:right-[40%] top-[75%] translate-y-[-100%] translate-x-1/2">
+        <button className="clickable" onClick={() =>setIsShopModalOpen(true)}>
         <img
           src="/images/rooms/kitchen/refrigerator.png"
           alt="Refrigerator"
           className="w-80 h-auto"
         />
+        </button>
       </div>
     </>
   );

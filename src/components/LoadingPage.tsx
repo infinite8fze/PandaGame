@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { BrowserRouter, Link, Route, Routes, useNavigate } from 'react-router-dom';
 import { Loader2 } from 'lucide-react';
 import { SafeArea } from './SafeArea';
+import { ShopPage, ShoppingPage } from './ShoppingPage';
 
 // List of all assets to preload
 const assetsToLoad = [
@@ -199,7 +200,7 @@ export function LoadingPage() {
       });
   }, [navigate, bgLoaded]);
 
-  return (
+  return (  
     <div className="relative h-screen w-full">
       {/* Full screen background */}
       <div 
