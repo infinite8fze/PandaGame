@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { items } from './data';
-import { ShoppingItem } from '../rooms/ShoppingItem';
+import { ShoppingItem } from './ShoppingItem';
 
-export function ShoppingPage() {
+interface ShoppingPageProps {
+isOpen: boolean;
+onClose: () => void
+}
+export function ShoppingPage({isOpen,onClose}:ShoppingPageProps) {
   const [currentPage, setCurrentPage] = useState(0);
   const [direction, setDirection] = useState('');
   const totalPages = 3;
@@ -27,9 +31,10 @@ export function ShoppingPage() {
   const getCurrentItems = () => {
     return items.slice(currentPage * 5, (currentPage * 5) + 5);
   };
-
+  if(!isOpen)
+  return null;
   return (
-    <div className="min-h-screen relative bg-cover bg-center bg-no-repeat"
+    <div className="top-0 left-0 z-50 absolute bg-cover bg-center bg-no-repeat w-full px-4"
          style={{ backgroundImage: 'url("/images/BG2.png")' }}>
       {/* Background Images */}
       <div className="absolute inset-x-0 top-[20%] w-full">
@@ -67,6 +72,16 @@ export function ShoppingPage() {
 
       {/* Safe Area Container (9:16 aspect ratio) */}
       <div className="relative z-10 w-full h-screen flex items-center justify-center">
+      <button
+            onClick={onClose}
+            className="clickable absolute top-4 right-4 w-8 h-8 transition-transform hover:scale-110"
+          >
+            <img
+              src="/images/Close.png"
+              alt="Close"
+              className="w-full h-full object-contain"
+            />
+      </button>
         <div className="w-full max-w-[calc(100vh*9/16)] h-full mx-auto px-4 py-8">
           {/* Content */}
           <div className="relative h-full flex flex-col justify-center">
@@ -75,7 +90,7 @@ export function ShoppingPage() {
               {/* Left Navigation Button */}
               <button 
                 onClick={prevPage}
-                className="absolute -left-14 z-10 hover:scale-110 transition-transform"
+                className="clickable absolute -left-14 z-10 hover:scale-110 transition-transform"
               >
                 <img 
                   src="/images/arrow.png"
@@ -114,7 +129,7 @@ export function ShoppingPage() {
               {/* Right Navigation Button */}
               <button 
                 onClick={nextPage}
-                className="absolute -right-14 z-10 hover:scale-110 transition-transform"
+                className="clickable absolute -right-14 z-10 hover:scale-110 transition-transform"
               >
                 <img 
                   src="/images/arrow-1.png"

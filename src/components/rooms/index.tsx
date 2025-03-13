@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Scene } from "../Scene";
 import { useAudio } from "../../hooks/useAudio";
 import { ParentControlPanel } from "../parent/ParentControlPanel";
@@ -7,6 +7,7 @@ import RoomSwitch from "./RoomSwitch";
 import { SafeArea } from "../SafeArea";
 import { MinigameModal } from "../minigames/MinigameModal";
 import { GameFrame } from "../minigames/GameFrame";
+import { ShoppingPage } from "./ShoppingPage";
 
 const Rooms = () => {
   const [currentRoom, setCurrentRoom] = useState("gameroom");
@@ -21,13 +22,13 @@ const Rooms = () => {
   } = useAudio(currentRoom);
   const [showControlPanel, setShowControlPanel] = useState(false);
   const [isMinigameModalOpen, setIsMinigameModalOpen] = useState(false);
+  const [isShopModalOpen, setIsShopModalOpen] = useState(false);
   const [currentGameUrl, setCurrentGameUrl] = useState<string | null>(null);
 
   const handleGameSelect = (url: string) => {
     setCurrentGameUrl(url);
     setIsMinigameModalOpen(false);
   };
-
   {
     /* HANDLE ROOM CHANGING FOR PANDA ANIMATION */
   }
@@ -60,6 +61,7 @@ const Rooms = () => {
       <RoomSwitch
         currentRoom={currentRoom}
         setIsMinigameModalOpen={setIsMinigameModalOpen}
+        setIsShopModalOpen={setIsShopModalOpen}
       />
       {/* <div className="absolute inset-0"> */}
       <Scene
@@ -82,6 +84,7 @@ const Rooms = () => {
           isLoading={isLoading}
           isRecording={isRecording}
           isMinigameModalOpen={isMinigameModalOpen}
+          isShopModalOpen={isShopModalOpen}
         />
       </SafeArea>
       <MinigameModal
@@ -90,6 +93,10 @@ const Rooms = () => {
         onSelectGame={handleGameSelect}
         currentRoom={currentRoom}
       />
+      <ShoppingPage
+        isOpen={isShopModalOpen}
+        onClose={() => setIsShopModalOpen(false)}
+       />
       {currentGameUrl && (
         <GameFrame
           url={currentGameUrl}

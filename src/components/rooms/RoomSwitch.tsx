@@ -9,10 +9,12 @@ import { ShoppingPage } from "./ShoppingPage";
 interface RoomSwitchProps {
   currentRoom?: string;
   setIsMinigameModalOpen: Dispatch<SetStateAction<boolean>>;
+  setIsShopModalOpen: Dispatch<SetStateAction<boolean>>;
 }
 const RoomSwitch = ({
   currentRoom,
   setIsMinigameModalOpen,
+  setIsShopModalOpen
 }: RoomSwitchProps) => {
   const renderRoom = () => {
     switch (currentRoom) {
@@ -21,15 +23,13 @@ const RoomSwitch = ({
       case "bedroom":
         return <Bedroom />;
       case "kitchen":
-        return <Kitchen />;
+        return <Kitchen  setIsShopModalOpen={setIsShopModalOpen} />;
       case "school":
         return <School setIsMinigameModalOpen={setIsMinigameModalOpen} />;
       case "gameroom":
         return <Playroom setIsMinigameModalOpen={setIsMinigameModalOpen} />;
       case "parent":
         return <ParentRoom />;
-      case "shop":
-        return <ShoppingPage />;
       default:
         return null;
     }

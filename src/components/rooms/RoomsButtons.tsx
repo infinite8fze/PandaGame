@@ -26,6 +26,7 @@ interface RoomButtonsProps {
   isLoading: boolean;
   isRecording: boolean;
   isMinigameModalOpen: boolean;
+  isShopModalOpen: boolean;
 }
 const RoomsButtons = ({
   currentRoom,
@@ -38,6 +39,7 @@ const RoomsButtons = ({
   isLoading,
   isRecording,
   isMinigameModalOpen,
+  isShopModalOpen,
 }: RoomButtonsProps) => {
   const rooms = [
     { id: "gameroom", name: "Playroom", icon: GameRoomIcon },
@@ -72,7 +74,7 @@ const RoomsButtons = ({
                 bgColor={"orangeGradient"}
                 borderColor={"borderOrangeGradient"}
                 icon={ParentIcon}
-                onClick={() => !isMinigameModalOpen && setCurrentRoom("parent")}
+                onClick={() => !isMinigameModalOpen && !isShopModalOpen && setCurrentRoom("parent")}
               />
               <div className="w-full h-full absolute top-0 left-0 inset-0 z-20">
                 <KingIcon className="w-6 h-6 relative top-2 left-1/2 -translate-x-1/2 translate-y-[-100%] text-[#FEDA0C]"></KingIcon>
